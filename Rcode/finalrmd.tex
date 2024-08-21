@@ -1,0 +1,2219 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={final\_rmd},
+  pdfauthor={final},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{final\_rmd}
+\author{final}
+\date{2024-08-12}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load necessary libraries}
+\FunctionTok{library}\NormalTok{(readr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'readr' was built under R version 4.4.1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'ggplot2' was built under R version 4.4.1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'dplyr' was built under R version 4.4.1
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(broom)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'broom' was built under R version 4.4.1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Read the CSV file}
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"agricultural\_yield\_train.csv"}\NormalTok{)}
+
+\CommentTok{\# Check for missing values using colSums}
+\NormalTok{missing\_values }\OtherTok{\textless{}{-}} \FunctionTok{colSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(data))}
+
+\CommentTok{\# Print the number of missing values for each column}
+\FunctionTok{print}\NormalTok{(missing\_values)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                     Soil_Quality                     Seed_Variety 
+##                                0                                0 
+## Fertilizer_Amount_kg_per_hectare                       Sunny_Days 
+##                                0                                0 
+##                      Rainfall_mm              Irrigation_Schedule 
+##                                0                                0 
+##             Yield_kg_per_hectare 
+##                                0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Function to identify outliers using IQR}
+\NormalTok{find\_outliers }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  Q1 }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(x, }\FloatTok{0.25}\NormalTok{)}
+\NormalTok{  Q3 }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(x, }\FloatTok{0.75}\NormalTok{)}
+\NormalTok{  IQR }\OtherTok{\textless{}{-}}\NormalTok{ Q3 }\SpecialCharTok{{-}}\NormalTok{ Q1}
+\NormalTok{  lower\_bound }\OtherTok{\textless{}{-}}\NormalTok{ Q1 }\SpecialCharTok{{-}} \FloatTok{1.5} \SpecialCharTok{*}\NormalTok{ IQR}
+\NormalTok{  upper\_bound }\OtherTok{\textless{}{-}}\NormalTok{ Q3 }\SpecialCharTok{+} \FloatTok{1.5} \SpecialCharTok{*}\NormalTok{ IQR}
+\NormalTok{  outliers }\OtherTok{\textless{}{-}} \FunctionTok{which}\NormalTok{(x }\SpecialCharTok{\textless{}}\NormalTok{ lower\_bound }\SpecialCharTok{|}\NormalTok{ x }\SpecialCharTok{\textgreater{}}\NormalTok{ upper\_bound)}
+  \FunctionTok{return}\NormalTok{(outliers)}
+\NormalTok{\}}
+
+\CommentTok{\# Identify outliers for each numeric column}
+\NormalTok{numeric\_cols }\OtherTok{\textless{}{-}} \FunctionTok{names}\NormalTok{(data)[}\FunctionTok{sapply}\NormalTok{(data, is.numeric)]}
+\NormalTok{outliers\_list }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(data[, numeric\_cols], find\_outliers)}
+
+\CommentTok{\# Combine all outlier indices}
+\NormalTok{all\_outliers }\OtherTok{\textless{}{-}} \FunctionTok{unique}\NormalTok{(}\FunctionTok{unlist}\NormalTok{(outliers\_list))}
+\CommentTok{\# Create a  data frame with outlier values}
+\NormalTok{outliers\_data }\OtherTok{\textless{}{-}}\NormalTok{ data[all\_outliers, ]}
+
+\CommentTok{\# Print the data frame}
+\FunctionTok{head}\NormalTok{(outliers\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Soil_Quality Seed_Variety Fertilizer_Amount_kg_per_hectare Sunny_Days
+## 212     59.01316            1                         65.09466  130.08629
+## 432     65.81460            1                        275.03355  127.14334
+## 483     70.71398            1                        201.61239  127.23752
+## 728     86.05724            1                        192.22578  128.67852
+## 793     68.00166            1                        193.71652  133.37125
+## 946     53.12819            1                        209.89666   72.62996
+##     Rainfall_mm Irrigation_Schedule Yield_kg_per_hectare
+## 212    489.5360                   6             779.9393
+## 432    613.3043                   4             800.8255
+## 483    570.9249                   5             757.7700
+## 728    558.2322                   6             954.1423
+## 793    541.1011                   6             914.2621
+## 946    442.8674                   7             914.8469
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Remove outliers from the data}
+\NormalTok{cleaned\_data }\OtherTok{\textless{}{-}}\NormalTok{ data[}\SpecialCharTok{{-}}\NormalTok{all\_outliers, ]}
+
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\CommentTok{\# Print the number of rows before and after removing outliers}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Number of rows before removing outliers:"}\NormalTok{, }\FunctionTok{nrow}\NormalTok{(data)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Number of rows before removing outliers: 16000"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Number of rows after removing outliers:"}\NormalTok{, }\FunctionTok{nrow}\NormalTok{(cleaned\_data)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Number of rows after removing outliers: 15515"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#consider the oulier of data frame}
+\FunctionTok{hist}\NormalTok{(outliers\_data}\SpecialCharTok{$}\NormalTok{Yield\_kg\_per\_hectare ,}\AttributeTok{xlab=} \StringTok{"Yield\_kg\_per\_hectare\_outlier data"}\NormalTok{,}\AttributeTok{main =} \StringTok{"Histograms for ouler yield"}\NormalTok{,}\AttributeTok{breaks =} \DecValTok{12}\NormalTok{,}\AttributeTok{col =} \StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{finalrmd_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Logarithmic transformation}
+\NormalTok{log\_yield }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(outliers\_data}\SpecialCharTok{$}\NormalTok{Yield\_kg\_per\_hectare)}
+\FunctionTok{hist}\NormalTok{(log\_yield, }\AttributeTok{xlab =} \StringTok{"Log of Yield (kg per hectare)"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Histogram of Log Transformed Yield"}\NormalTok{, }\AttributeTok{breaks =} \DecValTok{12}\NormalTok{, }\AttributeTok{col =} \StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{finalrmd_files/figure-latex/unnamed-chunk-1-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#mean of the compair yeild}
+\CommentTok{\#with outlier mean of yeil}
+\FunctionTok{mean}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{Yield\_kg\_per\_hectare)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 713.9997
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#with out mean of yeil}
+\FunctionTok{mean}\NormalTok{(cleaned\_data}\SpecialCharTok{$}\NormalTok{Yield\_kg\_per\_hectare)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 710.5186
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#ouiltr mean}
+\FunctionTok{mean}\NormalTok{(outliers\_data}\SpecialCharTok{$}\NormalTok{Yield\_kg\_per\_hectare)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 825.3593
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#with oulier variyanse yeild}
+\FunctionTok{var}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{Yield\_kg\_per\_hectare)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 40889.25
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#with out oulier variyanse yeild}
+\FunctionTok{var}\NormalTok{(cleaned\_data}\SpecialCharTok{$}\NormalTok{Yield\_kg\_per\_hectare)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 38814.39
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#oulier variyanse yeild}
+\FunctionTok{var}\NormalTok{(outliers\_data}\SpecialCharTok{$}\NormalTok{Yield\_kg\_per\_hectare)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 94665.92
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\CommentTok{\#consider the cleaned\_data frame}
+\CommentTok{\# Calculate the number of samples for the training set (75\% of the data)}
+\NormalTok{train\_size }\OtherTok{\textless{}{-}} \FunctionTok{floor}\NormalTok{(}\FloatTok{0.75} \SpecialCharTok{*} \FunctionTok{nrow}\NormalTok{(cleaned\_data))}
+
+\CommentTok{\# Generate a vector of row indices}
+\NormalTok{indices }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(cleaned\_data)}
+
+\CommentTok{\# Randomly sample indices for the training set}
+\NormalTok{train\_indices }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(indices, }\AttributeTok{size =}\NormalTok{ train\_size, }\AttributeTok{replace =} \ConstantTok{FALSE}\NormalTok{)}
+
+\CommentTok{\# Create training and testing sets}
+\NormalTok{train1 }\OtherTok{\textless{}{-}}\NormalTok{ cleaned\_data[train\_indices, ]}
+\NormalTok{test1 }\OtherTok{\textless{}{-}}\NormalTok{ cleaned\_data[}\SpecialCharTok{{-}}\NormalTok{train\_indices, ]}
+
+\CommentTok{\# Print the number of rows train and testing data set}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Number of rows train data set:"}\NormalTok{, }\FunctionTok{nrow}\NormalTok{(train1)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Number of rows train data set: 11636"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Number of rows teast data set:"}\NormalTok{, }\FunctionTok{nrow}\NormalTok{(test1)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Number of rows teast data set: 3879"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Filter the train1 dataset where Seed\_Variety is 0}
+\NormalTok{train1\_filtered\_0 }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(train1, Seed\_Variety }\SpecialCharTok{==} \DecValTok{0}\NormalTok{)}
+
+\CommentTok{\# Print the head of the filtered dataset to verify}
+\FunctionTok{head}\NormalTok{(train1\_filtered\_0)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       Soil_Quality Seed_Variety Fertilizer_Amount_kg_per_hectare Sunny_Days
+## 9169      56.39287            0                        175.85742   83.82306
+## 11199     65.40898            0                         73.51405   90.68387
+## 5513      98.15468            0                        154.67541   99.40674
+## 9952      66.75429            0                        202.23041   97.12354
+## 4971      73.44140            0                        259.75131   91.38074
+## 5251      82.94582            0                        147.94957   88.97410
+##       Rainfall_mm Irrigation_Schedule Yield_kg_per_hectare
+## 9169     362.0627                   6             532.9056
+## 11199    583.0311                   3             159.2787
+## 5513     544.5373                   4             349.1746
+## 9952     509.4972                   8             686.4829
+## 4971     434.9708                   6             629.7341
+## 5251     707.3065                   8             520.4677
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Filter the train1 dataset where Seed\_Variety is 1}
+\NormalTok{train1\_filtered\_1 }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(train1, Seed\_Variety }\SpecialCharTok{==} \DecValTok{1}\NormalTok{)}
+
+\CommentTok{\# Print the head of the filtered dataset to verify}
+\FunctionTok{head}\NormalTok{(train1\_filtered\_1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       Soil_Quality Seed_Variety Fertilizer_Amount_kg_per_hectare Sunny_Days
+## 2658      65.48625            1                         133.4728  114.45478
+## 7275      93.21029            1                         149.7396   79.61157
+## 7344      65.07354            1                         209.9594   93.09703
+## 10754     53.01665            1                         156.8786   90.70696
+## 12276     86.44290            1                         254.1891  112.88811
+## 15554     68.89882            1                         180.7718  103.62387
+##       Rainfall_mm Irrigation_Schedule Yield_kg_per_hectare
+## 2658     556.5807                   5             733.1858
+## 7275     647.7929                   9             950.5642
+## 7344     599.1472                   7             859.5079
+## 10754    311.7650                   4             753.7963
+## 12276    495.8976                   3             780.9508
+## 15554    534.7204                   2             567.8401
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\CommentTok{\#discriptive anyis}
+\NormalTok{df }\OtherTok{\textless{}{-}}\NormalTok{train1 }\CommentTok{\# Training data set}
+\CommentTok{\# Display summary statistics}
+\FunctionTok{summary}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Soil_Quality     Seed_Variety    Fertilizer_Amount_kg_per_hectare
+##  Min.   : 50.01   Min.   :0.0000   Min.   : 50.05                  
+##  1st Qu.: 62.09   1st Qu.:0.0000   1st Qu.:112.49                  
+##  Median : 74.67   Median :1.0000   Median :175.43                  
+##  Mean   : 74.77   Mean   :0.7013   Mean   :175.07                  
+##  3rd Qu.: 87.40   3rd Qu.:1.0000   3rd Qu.:237.57                  
+##  Max.   :100.00   Max.   :1.0000   Max.   :299.99                  
+##    Sunny_Days      Rainfall_mm    Irrigation_Schedule Yield_kg_per_hectare
+##  Min.   : 72.94   Min.   :232.8   Min.   : 0.000      Min.   : 157.3      
+##  1st Qu.: 93.19   1st Qu.:434.2   1st Qu.: 3.000      1st Qu.: 575.9      
+##  Median : 99.93   Median :499.0   Median : 5.000      Median : 725.2      
+##  Mean   : 99.92   Mean   :500.6   Mean   : 4.942      Mean   : 709.5      
+##  3rd Qu.:106.58   3rd Qu.:566.6   3rd Qu.: 6.000      3rd Qu.: 852.0      
+##  Max.   :126.77   Max.   :767.5   Max.   :10.000      Max.   :1277.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Histograms for Soil\_Quality}
+\FunctionTok{hist}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{Soil\_Quality,}\AttributeTok{xlab =} \StringTok{"Soil\_Quality"}\NormalTok{,}\AttributeTok{main =} \StringTok{"Histograms for Soil\_Quality"}\NormalTok{,}\AttributeTok{breaks =} \DecValTok{50}\NormalTok{,}\AttributeTok{col =} \StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{finalrmd_files/figure-latex/unnamed-chunk-1-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Summarize the data to get counts and percentages for each seed variety}
+\NormalTok{seed\_variety\_counts }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Seed\_Variety) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{Count =} \FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Percentage =}\NormalTok{ Count }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(Count) }\SpecialCharTok{*} \DecValTok{100}\NormalTok{)}
+
+\CommentTok{\# Plot a pie chart using ggplot}
+\FunctionTok{ggplot}\NormalTok{(seed\_variety\_counts, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =}\NormalTok{ Count, }\AttributeTok{fill =} \FunctionTok{factor}\NormalTok{(Seed\_Variety))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{width =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{coord\_polar}\NormalTok{(}\StringTok{"y"}\NormalTok{, }\AttributeTok{start =} \DecValTok{0}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =} \FunctionTok{paste0}\NormalTok{(}\FunctionTok{round}\NormalTok{(Percentage, }\DecValTok{1}\NormalTok{), }\StringTok{"\%"}\NormalTok{)), }
+            \AttributeTok{position =} \FunctionTok{position\_stack}\NormalTok{(}\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{), }\AttributeTok{size =} \DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Distribution of Seed Varieties"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"Seed Variety"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_void}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"green"}\NormalTok{, }\StringTok{"blue"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{finalrmd_files/figure-latex/unnamed-chunk-1-4.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Histograms for Fertilizer\_Amount\_kg\_per\_hectare}
+
+\FunctionTok{hist}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{Fertilizer\_Amount\_kg\_per\_hectare,}\AttributeTok{xlab =} \StringTok{"Fertilizer\_Amount\_kg\_per\_hectare"}\NormalTok{,}\AttributeTok{main =} \StringTok{"Histograms for Fertilizer\_Amount\_kg\_per\_hectare"}\NormalTok{,}\AttributeTok{breaks =} \DecValTok{50}\NormalTok{,}\AttributeTok{col =} \StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{finalrmd_files/figure-latex/unnamed-chunk-1-5.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Histograms for Rainfall\_mm}
+
+\FunctionTok{hist}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{Rainfall\_mm,}\AttributeTok{xlab =} \StringTok{"Rainfall\_mm"}\NormalTok{,}\AttributeTok{main =} \StringTok{"\#Histograms for Rainfall\_mm"}\NormalTok{,}\AttributeTok{breaks =} \DecValTok{50}\NormalTok{,}\AttributeTok{col =} \StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{finalrmd_files/figure-latex/unnamed-chunk-1-6.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Histograms for Irrigation\_Schedule}
+
+\FunctionTok{hist}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{Irrigation\_Schedule ,}\AttributeTok{xlab=} \StringTok{"Irrigation\_Schedule"}\NormalTok{,}\AttributeTok{main =} \StringTok{"\#Histograms for Irrigation\_Schedule"}\NormalTok{,}\AttributeTok{breaks =} \DecValTok{12}\NormalTok{,}\AttributeTok{col =} \StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{finalrmd_files/figure-latex/unnamed-chunk-1-7.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Histograms for Yield\_kg\_per\_hectare}
+
+\FunctionTok{hist}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{Yield\_kg\_per\_hectare ,}\AttributeTok{xlab=} \StringTok{"Yield\_kg\_per\_hectare"}\NormalTok{,}\AttributeTok{main =} \StringTok{"\#Histograms for Yield\_kg\_per\_hectare"}\NormalTok{,}\AttributeTok{breaks =} \DecValTok{50}\NormalTok{,}\AttributeTok{col =} \StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{finalrmd_files/figure-latex/unnamed-chunk-1-8.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#consider the relasion between two variyable}
+
+\FunctionTok{plot}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{Fertilizer\_Amount\_kg\_per\_hectare, df}\SpecialCharTok{$}\NormalTok{Yield\_kg\_per\_hectare, }\AttributeTok{main =} \StringTok{"Basic Scatter Plot"}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"Fertilizer\_Amount\_kg\_per\_hectare"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Yield\_kg\_per\_hectare"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{19}\NormalTok{, }\AttributeTok{col =} \StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{finalrmd_files/figure-latex/unnamed-chunk-1-9.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Correlation matrix}
+\NormalTok{cor\_matrix }\OtherTok{\textless{}{-}} \FunctionTok{cor}\NormalTok{(cleaned\_data }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select\_if}\NormalTok{(is.numeric))}
+\FunctionTok{print}\NormalTok{(cor\_matrix)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                  Soil_Quality  Seed_Variety
+## Soil_Quality                      1.000000000 -0.0031737518
+## Seed_Variety                     -0.003173752  1.0000000000
+## Fertilizer_Amount_kg_per_hectare -0.004597307 -0.0114884161
+## Sunny_Days                       -0.004336951 -0.0042159457
+## Rainfall_mm                       0.011597031 -0.0003057816
+## Irrigation_Schedule               0.003363257  0.0052917529
+## Yield_kg_per_hectare              0.108710202  0.6939216884
+##                                  Fertilizer_Amount_kg_per_hectare    Sunny_Days
+## Soil_Quality                                         -0.004597307 -4.336951e-03
+## Seed_Variety                                         -0.011488416 -4.215946e-03
+## Fertilizer_Amount_kg_per_hectare                      1.000000000  2.189391e-03
+## Sunny_Days                                            0.002189391  1.000000e+00
+## Rainfall_mm                                           0.004783484 -1.031590e-03
+## Irrigation_Schedule                                   0.007026269 -3.105524e-05
+## Yield_kg_per_hectare                                  0.289617070  9.540786e-02
+##                                    Rainfall_mm Irrigation_Schedule
+## Soil_Quality                      0.0115970312        3.363257e-03
+## Seed_Variety                     -0.0003057816        5.291753e-03
+## Fertilizer_Amount_kg_per_hectare  0.0047834843        7.026269e-03
+## Sunny_Days                       -0.0010315900       -3.105524e-05
+## Rainfall_mm                       1.0000000000       -2.312458e-03
+## Irrigation_Schedule              -0.0023124582        1.000000e+00
+## Yield_kg_per_hectare             -0.2454698683        5.378587e-01
+##                                  Yield_kg_per_hectare
+## Soil_Quality                               0.10871020
+## Seed_Variety                               0.69392169
+## Fertilizer_Amount_kg_per_hectare           0.28961707
+## Sunny_Days                                 0.09540786
+## Rainfall_mm                               -0.24546987
+## Irrigation_Schedule                        0.53785871
+## Yield_kg_per_hectare                       1.00000000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\CommentTok{\# Sample 100 random rows from the cleaned\_data data frame}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{) }\CommentTok{\# Set seed for reproducibility}
+\NormalTok{random\_sample }\OtherTok{\textless{}{-}} \FunctionTok{sample\_n}\NormalTok{(cleaned\_data, }\DecValTok{100}\NormalTok{)}
+
+\CommentTok{\# Create scatter plot with a regression line for Fertilizer\_Amount\_kg\_per\_hectare vs Yield\_kg\_per\_hectare}
+\FunctionTok{ggplot}\NormalTok{(random\_sample, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Fertilizer\_Amount\_kg\_per\_hectare, }\AttributeTok{y =}\NormalTok{ Yield\_kg\_per\_hectare)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"blue"}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\# Scatter plot}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\# Regression line}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Scatter Plot of Fertilizer Amount vs Yield with Regression Line"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Fertilizer Amount (kg per hectare)"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Yield (kg per hectare)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\includegraphics{finalrmd_files/figure-latex/unnamed-chunk-1-10.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\CommentTok{\#discriptive analyis for comparison of the seed vari}
+\CommentTok{\#train data set}
+\FunctionTok{summary}\NormalTok{(train1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Soil_Quality     Seed_Variety    Fertilizer_Amount_kg_per_hectare
+##  Min.   : 50.01   Min.   :0.0000   Min.   : 50.05                  
+##  1st Qu.: 62.09   1st Qu.:0.0000   1st Qu.:112.49                  
+##  Median : 74.67   Median :1.0000   Median :175.43                  
+##  Mean   : 74.77   Mean   :0.7013   Mean   :175.07                  
+##  3rd Qu.: 87.40   3rd Qu.:1.0000   3rd Qu.:237.57                  
+##  Max.   :100.00   Max.   :1.0000   Max.   :299.99                  
+##    Sunny_Days      Rainfall_mm    Irrigation_Schedule Yield_kg_per_hectare
+##  Min.   : 72.94   Min.   :232.8   Min.   : 0.000      Min.   : 157.3      
+##  1st Qu.: 93.19   1st Qu.:434.2   1st Qu.: 3.000      1st Qu.: 575.9      
+##  Median : 99.93   Median :499.0   Median : 5.000      Median : 725.2      
+##  Mean   : 99.92   Mean   :500.6   Mean   : 4.942      Mean   : 709.5      
+##  3rd Qu.:106.58   3rd Qu.:566.6   3rd Qu.: 6.000      3rd Qu.: 852.0      
+##  Max.   :126.77   Max.   :767.5   Max.   :10.000      Max.   :1277.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#seed varity o data set}
+\FunctionTok{summary}\NormalTok{(train1\_filtered\_0)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Soil_Quality     Seed_Variety Fertilizer_Amount_kg_per_hectare
+##  Min.   : 50.01   Min.   :0     Min.   : 50.07                  
+##  1st Qu.: 62.35   1st Qu.:0     1st Qu.:113.13                  
+##  Median : 74.68   Median :0     Median :176.10                  
+##  Mean   : 74.84   Mean   :0     Mean   :175.37                  
+##  3rd Qu.: 87.54   3rd Qu.:0     3rd Qu.:237.23                  
+##  Max.   :100.00   Max.   :0     Max.   :299.99                  
+##    Sunny_Days      Rainfall_mm    Irrigation_Schedule Yield_kg_per_hectare
+##  Min.   : 72.94   Min.   :234.0   Min.   : 0.000      Min.   : 157.3      
+##  1st Qu.: 93.18   1st Qu.:433.2   1st Qu.: 3.000      1st Qu.: 400.5      
+##  Median : 99.74   Median :499.8   Median : 5.000      Median : 495.5      
+##  Mean   : 99.93   Mean   :500.7   Mean   : 4.939      Mean   : 500.0      
+##  3rd Qu.:106.51   3rd Qu.:568.1   3rd Qu.: 6.000      3rd Qu.: 594.2      
+##  Max.   :126.77   Max.   :764.9   Max.   :10.000      Max.   :1057.9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#seed varity 1 data set}
+\FunctionTok{summary}\NormalTok{(train1\_filtered\_1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Soil_Quality    Seed_Variety Fertilizer_Amount_kg_per_hectare
+##  Min.   :50.01   Min.   :1     Min.   : 50.05                  
+##  1st Qu.:61.99   1st Qu.:1     1st Qu.:112.30                  
+##  Median :74.66   Median :1     Median :175.03                  
+##  Mean   :74.74   Mean   :1     Mean   :174.94                  
+##  3rd Qu.:87.37   3rd Qu.:1     3rd Qu.:237.66                  
+##  Max.   :99.99   Max.   :1     Max.   :299.99                  
+##    Sunny_Days      Rainfall_mm    Irrigation_Schedule Yield_kg_per_hectare
+##  Min.   : 73.03   Min.   :232.8   Min.   : 0.000      Min.   : 313.4      
+##  1st Qu.: 93.20   1st Qu.:434.7   1st Qu.: 3.000      1st Qu.: 699.9      
+##  Median :100.04   Median :498.7   Median : 5.000      Median : 795.1      
+##  Mean   : 99.92   Mean   :500.5   Mean   : 4.943      Mean   : 798.8      
+##  3rd Qu.:106.63   3rd Qu.:565.7   3rd Qu.: 6.000      3rd Qu.: 897.0      
+##  Max.   :126.70   Max.   :767.5   Max.   :10.000      Max.   :1277.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#3}
+\CommentTok{\# Fit the model}
+\NormalTok{model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Yield\_kg\_per\_hectare }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Fertilizer\_Amount\_kg\_per\_hectare }\SpecialCharTok{+} 
+\NormalTok{            Seed\_Variety }\SpecialCharTok{+}\NormalTok{ Rainfall\_mm }\SpecialCharTok{+}\NormalTok{ Irrigation\_Schedule }\SpecialCharTok{+}\NormalTok{ Soil\_Quality }\SpecialCharTok{+} 
+\NormalTok{            Sunny\_Days, }\AttributeTok{data =}\NormalTok{ train1)}
+\CommentTok{\#check the Diagnosing}
+\CommentTok{\#Diagnosing Heteroscedasticity}
+\CommentTok{\# Plot residuals vs. fitted values}
+\CommentTok{\#This plot helps detect non{-}linearity, unequal error variances (heteroscedasticity), and outliers.}
+\FunctionTok{plot}\NormalTok{(model}\SpecialCharTok{$}\NormalTok{fitted.values, model}\SpecialCharTok{$}\NormalTok{residuals, }
+     \AttributeTok{xlab =} \StringTok{"Fitted Values"}\NormalTok{, }
+     \AttributeTok{ylab =} \StringTok{"Residuals"}\NormalTok{, }
+     \AttributeTok{main =} \StringTok{"Residuals vs. Fitted Values"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h =} \DecValTok{0}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{)}
+
+\CommentTok{\# Add a smoothed line to identify patterns}
+\FunctionTok{lines}\NormalTok{(}\FunctionTok{lowess}\NormalTok{(model}\SpecialCharTok{$}\NormalTok{fitted.values, model}\SpecialCharTok{$}\NormalTok{residuals), }\AttributeTok{col =} \StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{finalrmd_files/figure-latex/unnamed-chunk-1-11.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Normal Q{-}Q Plot}
+\FunctionTok{qqnorm}\NormalTok{(model}\SpecialCharTok{$}\NormalTok{residuals, }\AttributeTok{main =} \StringTok{"Normal Q{-}Q Plot"}\NormalTok{)}
+\FunctionTok{qqline}\NormalTok{(model}\SpecialCharTok{$}\NormalTok{residuals, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{finalrmd_files/figure-latex/unnamed-chunk-1-12.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Scale{-}Location Plot (Spread{-}Location Plot)}
+\FunctionTok{plot}\NormalTok{(model}\SpecialCharTok{$}\NormalTok{fitted.values, }\FunctionTok{sqrt}\NormalTok{(}\FunctionTok{abs}\NormalTok{(model}\SpecialCharTok{$}\NormalTok{residuals)), }
+     \AttributeTok{xlab =} \StringTok{"Fitted Values"}\NormalTok{, }
+     \AttributeTok{ylab =} \StringTok{"Square Root of Standardized Residuals"}\NormalTok{, }
+     \AttributeTok{main =} \StringTok{"Scale{-}Location Plot"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h =} \DecValTok{0}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(}\FunctionTok{lowess}\NormalTok{(model}\SpecialCharTok{$}\NormalTok{fitted.values, }\FunctionTok{sqrt}\NormalTok{(}\FunctionTok{abs}\NormalTok{(model}\SpecialCharTok{$}\NormalTok{residuals))), }\AttributeTok{col =} \StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{finalrmd_files/figure-latex/unnamed-chunk-1-13.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Residuals vs. Leverage Plot}
+
+\FunctionTok{plot}\NormalTok{(model, }\AttributeTok{which =} \DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{finalrmd_files/figure-latex/unnamed-chunk-1-14.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Variance Inflation Factor (VIF)}
+\CommentTok{\#Multicollinearity}
+\FunctionTok{library}\NormalTok{(car)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'car' was built under R version 4.4.1
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: carData
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'carData' was built under R version 4.4.1
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'car'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:dplyr':
+## 
+##     recode
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vif\_values }\OtherTok{\textless{}{-}} \FunctionTok{vif}\NormalTok{(model)}
+\FunctionTok{print}\NormalTok{(vif\_values)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Fertilizer_Amount_kg_per_hectare                     Seed_Variety 
+##                         1.000175                         1.000019 
+##                      Rainfall_mm              Irrigation_Schedule 
+##                         1.000162                         1.000047 
+##                     Soil_Quality                       Sunny_Days 
+##                         1.000088                         1.000122
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\CommentTok{\#Model selecsion  prat}
+
+\CommentTok{\#with seed variety}
+\NormalTok{model1 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Yield\_kg\_per\_hectare }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Fertilizer\_Amount\_kg\_per\_hectare }\SpecialCharTok{+}\NormalTok{ Seed\_Variety}\SpecialCharTok{+}\NormalTok{ Rainfall\_mm }\SpecialCharTok{+}\NormalTok{ Irrigation\_Schedule }\SpecialCharTok{+}\NormalTok{ Soil\_Quality}\SpecialCharTok{+}\NormalTok{Sunny\_Days, }\AttributeTok{data =}\NormalTok{ train1)}
+\CommentTok{\# Print the summary of the linear model}
+\FunctionTok{summary}\NormalTok{(model1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = Yield_kg_per_hectare ~ Fertilizer_Amount_kg_per_hectare + 
+##     Seed_Variety + Rainfall_mm + Irrigation_Schedule + Soil_Quality + 
+##     Sunny_Days, data = train1)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -176.442  -33.907    0.498   33.587  182.676 
+## 
+## Coefficients:
+##                                    Estimate Std. Error  t value Pr(>|t|)    
+## (Intercept)                       49.542132   6.136815    8.073 7.54e-16 ***
+## Fertilizer_Amount_kg_per_hectare   0.809088   0.006460  125.254  < 2e-16 ***
+## Seed_Variety                     299.062308   1.014272  294.854  < 2e-16 ***
+## Rainfall_mm                       -0.503506   0.004816 -104.552  < 2e-16 ***
+## Irrigation_Schedule               49.870165   0.222197  224.441  < 2e-16 ***
+## Soil_Quality                       1.516624   0.031891   47.557  < 2e-16 ***
+## Sunny_Days                         2.009503   0.047899   41.953  < 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 50.08 on 11629 degrees of freedom
+## Multiple R-squared:  0.935,  Adjusted R-squared:  0.935 
+## F-statistic: 2.79e+04 on 6 and 11629 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#wiith out seed varity}
+\NormalTok{model2 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Yield\_kg\_per\_hectare }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Fertilizer\_Amount\_kg\_per\_hectare }\SpecialCharTok{+}\NormalTok{Rainfall\_mm }\SpecialCharTok{+}\NormalTok{ Irrigation\_Schedule }\SpecialCharTok{+}\NormalTok{ Soil\_Quality}\SpecialCharTok{+}\NormalTok{Sunny\_Days, }\AttributeTok{data =}\NormalTok{ train1)}
+\CommentTok{\# Print the summary of the linear model}
+\FunctionTok{summary}\NormalTok{(model2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = Yield_kg_per_hectare ~ Fertilizer_Amount_kg_per_hectare + 
+##     Rainfall_mm + Irrigation_Schedule + Soil_Quality + Sunny_Days, 
+##     data = train1)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -384.35 -161.55   61.35  107.71  272.08 
+## 
+## Coefficients:
+##                                   Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)                      263.36971   17.74056   14.85   <2e-16 ***
+## Fertilizer_Amount_kg_per_hectare   0.80383    0.01881   42.74   <2e-16 ***
+## Rainfall_mm                       -0.50480    0.01402  -36.01   <2e-16 ***
+## Irrigation_Schedule               49.92567    0.64687   77.18   <2e-16 ***
+## Soil_Quality                       1.48740    0.09284   16.02   <2e-16 ***
+## Sunny_Days                         2.00323    0.13945   14.37   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 145.8 on 11630 degrees of freedom
+## Multiple R-squared:  0.4495, Adjusted R-squared:  0.4492 
+## F-statistic:  1899 on 5 and 11630 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#forwer selcsion method}
+\FunctionTok{library}\NormalTok{(leaps)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'leaps' was built under R version 4.4.1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Fit the regsubsets model with all predictors including Seed\_Variety}
+\NormalTok{Model\_forward}\OtherTok{\textless{}{-}} \FunctionTok{regsubsets}\NormalTok{(Yield\_kg\_per\_hectare }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Fertilizer\_Amount\_kg\_per\_hectare }\SpecialCharTok{+}\NormalTok{ Seed\_Variety}\SpecialCharTok{+}\NormalTok{ Rainfall\_mm }\SpecialCharTok{+}\NormalTok{ Irrigation\_Schedule }\SpecialCharTok{+}\NormalTok{ Soil\_Quality}\SpecialCharTok{+}\NormalTok{Sunny\_Days, }\AttributeTok{data =}\NormalTok{ train1,}\AttributeTok{nvmax =} \DecValTok{6}\NormalTok{,}\AttributeTok{method=}\StringTok{"forward"}\NormalTok{)  }\CommentTok{\# nvmax is the maximum number of predictors to include}
+
+\CommentTok{\# Get the summary of the model}
+\NormalTok{model\_with\_seed\_summary }\OtherTok{\textless{}{-}} \FunctionTok{summary}\NormalTok{(Model\_forward)}
+
+\CommentTok{\# Display key information from the summary}
+\FunctionTok{print}\NormalTok{(model\_with\_seed\_summary)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Subset selection object
+## Call: regsubsets.formula(Yield_kg_per_hectare ~ Fertilizer_Amount_kg_per_hectare + 
+##     Seed_Variety + Rainfall_mm + Irrigation_Schedule + Soil_Quality + 
+##     Sunny_Days, data = train1, nvmax = 6, method = "forward")
+## 6 Variables  (and intercept)
+##                                  Forced in Forced out
+## Fertilizer_Amount_kg_per_hectare     FALSE      FALSE
+## Seed_Variety                         FALSE      FALSE
+## Rainfall_mm                          FALSE      FALSE
+## Irrigation_Schedule                  FALSE      FALSE
+## Soil_Quality                         FALSE      FALSE
+## Sunny_Days                           FALSE      FALSE
+## 1 subsets of each size up to 6
+## Selection Algorithm: forward
+##          Fertilizer_Amount_kg_per_hectare Seed_Variety Rainfall_mm
+## 1  ( 1 ) " "                              "*"          " "        
+## 2  ( 1 ) " "                              "*"          " "        
+## 3  ( 1 ) "*"                              "*"          " "        
+## 4  ( 1 ) "*"                              "*"          "*"        
+## 5  ( 1 ) "*"                              "*"          "*"        
+## 6  ( 1 ) "*"                              "*"          "*"        
+##          Irrigation_Schedule Soil_Quality Sunny_Days
+## 1  ( 1 ) " "                 " "          " "       
+## 2  ( 1 ) "*"                 " "          " "       
+## 3  ( 1 ) "*"                 " "          " "       
+## 4  ( 1 ) "*"                 " "          " "       
+## 5  ( 1 ) "*"                 "*"          " "       
+## 6  ( 1 ) "*"                 "*"          "*"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Set up the plotting area to display two plots side by side}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+
+\CommentTok{\# Plot RSS for each model}
+\FunctionTok{plot}\NormalTok{(model\_with\_seed\_summary}\SpecialCharTok{$}\NormalTok{rss, }
+     \AttributeTok{xlab =} \StringTok{"Number of Variables"}\NormalTok{, }
+     \AttributeTok{ylab =} \StringTok{"RSS"}\NormalTok{, }
+     \AttributeTok{type =} \StringTok{"l"}\NormalTok{, }
+     \AttributeTok{main =} \StringTok{"RSS vs Number of Variables"}\NormalTok{)}
+
+\CommentTok{\# Find and highlight the model with the minimum RSS}
+\NormalTok{RSS\_min }\OtherTok{\textless{}{-}} \FunctionTok{which.min}\NormalTok{(model\_with\_seed\_summary}\SpecialCharTok{$}\NormalTok{rss)}
+\FunctionTok{points}\NormalTok{(RSS\_min, model\_with\_seed\_summary}\SpecialCharTok{$}\NormalTok{rss[RSS\_min], }\AttributeTok{col =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{cex =} \DecValTok{2}\NormalTok{, }\AttributeTok{pch =} \DecValTok{20}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{v =}\NormalTok{ RSS\_min, }\AttributeTok{col =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{lty =} \DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Plot Adjusted R{-}squared for each model}
+\FunctionTok{plot}\NormalTok{(model\_with\_seed\_summary}\SpecialCharTok{$}\NormalTok{adjr2, }
+     \AttributeTok{xlab =} \StringTok{"Number of Variables"}\NormalTok{, }
+     \AttributeTok{ylab =} \StringTok{"Adjusted R{-}squared"}\NormalTok{, }
+     \AttributeTok{type =} \StringTok{"l"}\NormalTok{, }
+     \AttributeTok{main =} \StringTok{"Adjusted R{-}squared vs Number of Variables"}\NormalTok{)}
+
+\CommentTok{\# Find and highlight the model with the maximum Adjusted R{-}squared}
+\NormalTok{adjr2\_max }\OtherTok{\textless{}{-}} \FunctionTok{which.max}\NormalTok{(model\_with\_seed\_summary}\SpecialCharTok{$}\NormalTok{adjr2)}
+\FunctionTok{points}\NormalTok{(adjr2\_max, model\_with\_seed\_summary}\SpecialCharTok{$}\NormalTok{adjr2[adjr2\_max], }\AttributeTok{col =} \StringTok{"red"}\NormalTok{, }\AttributeTok{cex =} \DecValTok{2}\NormalTok{, }\AttributeTok{pch =} \DecValTok{20}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{v =}\NormalTok{ adjr2\_max, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{, }\AttributeTok{lty =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{finalrmd_files/figure-latex/unnamed-chunk-1-15.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(model\_with\_seed\_summary}\SpecialCharTok{$}\NormalTok{cp, }\AttributeTok{xlab =} \StringTok{"Number of Variables"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Cp"}\NormalTok{, }\AttributeTok{type =} \StringTok{"l"}\NormalTok{)}
+\NormalTok{cp.min }\OtherTok{\textless{}{-}} \FunctionTok{which.min}\NormalTok{(model\_with\_seed\_summary}\SpecialCharTok{$}\NormalTok{cp)}
+\FunctionTok{points}\NormalTok{(cp.min, model\_with\_seed\_summary}\SpecialCharTok{$}\NormalTok{cp[cp.min], }\AttributeTok{col =} \StringTok{"red"}\NormalTok{, }\AttributeTok{cex =} \DecValTok{2}\NormalTok{, }\AttributeTok{pch =} \DecValTok{20}\NormalTok{)}
+\NormalTok{bic.min }\OtherTok{\textless{}{-}} \FunctionTok{which.min}\NormalTok{(model\_with\_seed\_summary}\SpecialCharTok{$}\NormalTok{bic)}
+\FunctionTok{plot}\NormalTok{(model\_with\_seed\_summary}\SpecialCharTok{$}\NormalTok{bic, }\AttributeTok{xlab =} \StringTok{"Number of Variables"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"BIC"}\NormalTok{, }\AttributeTok{type =} \StringTok{"l"}\NormalTok{)}
+\FunctionTok{points}\NormalTok{(bic.min, model\_with\_seed\_summary}\SpecialCharTok{$}\NormalTok{bic[bic.min], }\AttributeTok{col =} \StringTok{"red"}\NormalTok{, }\AttributeTok{cex =} \DecValTok{2}\NormalTok{, }\AttributeTok{pch =} \DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{finalrmd_files/figure-latex/unnamed-chunk-1-16.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{res.sum }\OtherTok{\textless{}{-}} \FunctionTok{summary}\NormalTok{(Model\_forward)}
+\NormalTok{criterion}\OtherTok{\textless{}{-}}\FunctionTok{data.frame}\NormalTok{(}
+\AttributeTok{model=}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{,}
+\AttributeTok{Adj.R2 =}\NormalTok{ (res.sum}\SpecialCharTok{$}\NormalTok{adjr2),}
+\AttributeTok{CP =}\NormalTok{ (res.sum}\SpecialCharTok{$}\NormalTok{cp),}
+\AttributeTok{BIC =}\NormalTok{ (res.sum}\SpecialCharTok{$}\NormalTok{bic),}
+\AttributeTok{RSS=}\NormalTok{res.sum}\SpecialCharTok{$}\NormalTok{rss}
+\NormalTok{)}
+\FunctionTok{head}\NormalTok{(criterion)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   model    Adj.R2        CP        BIC       RSS
+## 1     1 0.4848061 80602.226  -7699.411 231291225
+## 2     2 0.7658595 30284.149 -16867.453 105106046
+## 3     3 0.8515871 14937.526 -22164.213  66617061
+## 4     4 0.9124791  4038.668 -28301.063  39281517
+## 5     5 0.9251869  1765.052 -30118.209  33575066
+## 6     6 0.9350158     7.000 -31748.771  29161470
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{ggplot}\NormalTok{(criterion, }\FunctionTok{aes}\NormalTok{(model)) }\SpecialCharTok{+}
+ \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ Adj.R2, }\AttributeTok{colour =} \StringTok{"Adj.R2"}\NormalTok{)) }\SpecialCharTok{+}
+ \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ CP, }\AttributeTok{colour =} \StringTok{"CP"}\NormalTok{))}\SpecialCharTok{+}
+ \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ BIC, }\AttributeTok{colour =} \StringTok{"BIC"}\NormalTok{))}\SpecialCharTok{+}
+ \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ RSS, }\AttributeTok{colour =} \StringTok{"RSS"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{finalrmd_files/figure-latex/unnamed-chunk-1-17.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{ggplot}\NormalTok{(criterion, }\FunctionTok{aes}\NormalTok{(model)) }\SpecialCharTok{+}
+ \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ Adj.R2, }\AttributeTok{colour =} \StringTok{"Adj.R2"}\NormalTok{)) }\SpecialCharTok{+}
+ \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ CP, }\AttributeTok{colour =} \StringTok{"CP"}\NormalTok{))}\SpecialCharTok{+}
+ \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ BIC, }\AttributeTok{colour =} \StringTok{"BIC"}\NormalTok{))}\SpecialCharTok{+}
+ \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ RSS, }\AttributeTok{colour =} \StringTok{"RSS"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{finalrmd_files/figure-latex/unnamed-chunk-1-18.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# standardize}
+\NormalTok{criterion\_std}\OtherTok{\textless{}{-}}\FunctionTok{cbind}\NormalTok{(}\AttributeTok{model=}\NormalTok{criterion}\SpecialCharTok{$}\NormalTok{model, }\FunctionTok{scale}\NormalTok{(criterion[,}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]))}
+\NormalTok{criterion\_std}\OtherTok{\textless{}{-}}\FunctionTok{as.data.frame}\NormalTok{(criterion\_std)}
+\FunctionTok{head}\NormalTok{(criterion\_std)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   model     Adj.R2         CP         BIC        RSS
+## 1     1 -1.8995511  1.8995956  1.63483364  1.8995586
+## 2     2 -0.2703079  0.2702245  0.64335942  0.2702933
+## 3     3  0.2266479 -0.2267211  0.07054348 -0.2266649
+## 4     4  0.5796339 -0.5796416 -0.59312369 -0.5796133
+## 5     5  0.6532998 -0.6532646 -0.78963819 -0.6532933
+## 6     6  0.7102774 -0.7101928 -0.96597467 -0.7102803
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#after stadlize}
+\FunctionTok{ggplot}\NormalTok{(criterion\_std, }\FunctionTok{aes}\NormalTok{(model)) }\SpecialCharTok{+}
+ \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ Adj.R2, }\AttributeTok{colour =} \StringTok{"Adj.R2"}\NormalTok{)) }\SpecialCharTok{+}
+ \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ CP, }\AttributeTok{colour =} \StringTok{"CP"}\NormalTok{))}\SpecialCharTok{+}
+ \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ BIC, }\AttributeTok{colour =} \StringTok{"BIC"}\NormalTok{))}\SpecialCharTok{+}
+ \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ RSS, }\AttributeTok{colour =} \StringTok{"RSS"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{finalrmd_files/figure-latex/unnamed-chunk-1-19.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{coef}\NormalTok{(Model\_forward, }\DecValTok{6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                      (Intercept) Fertilizer_Amount_kg_per_hectare 
+##                       49.5421315                        0.8090879 
+##                     Seed_Variety                      Rainfall_mm 
+##                      299.0623082                       -0.5035064 
+##              Irrigation_Schedule                     Soil_Quality 
+##                       49.8701649                        1.5166235 
+##                       Sunny_Days 
+##                        2.0095034
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#better model}
+\NormalTok{better\_model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Yield\_kg\_per\_hectare }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Fertilizer\_Amount\_kg\_per\_hectare }\SpecialCharTok{+}\NormalTok{ Seed\_Variety}\SpecialCharTok{+}\NormalTok{ Rainfall\_mm }\SpecialCharTok{+}\NormalTok{ Irrigation\_Schedule }\SpecialCharTok{+}\NormalTok{ Soil\_Quality}\SpecialCharTok{+}\NormalTok{Sunny\_Days,}\AttributeTok{data=}\NormalTok{train1 )}
+\FunctionTok{summary}\NormalTok{(better\_model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = Yield_kg_per_hectare ~ Fertilizer_Amount_kg_per_hectare + 
+##     Seed_Variety + Rainfall_mm + Irrigation_Schedule + Soil_Quality + 
+##     Sunny_Days, data = train1)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -176.442  -33.907    0.498   33.587  182.676 
+## 
+## Coefficients:
+##                                    Estimate Std. Error  t value Pr(>|t|)    
+## (Intercept)                       49.542132   6.136815    8.073 7.54e-16 ***
+## Fertilizer_Amount_kg_per_hectare   0.809088   0.006460  125.254  < 2e-16 ***
+## Seed_Variety                     299.062308   1.014272  294.854  < 2e-16 ***
+## Rainfall_mm                       -0.503506   0.004816 -104.552  < 2e-16 ***
+## Irrigation_Schedule               49.870165   0.222197  224.441  < 2e-16 ***
+## Soil_Quality                       1.516624   0.031891   47.557  < 2e-16 ***
+## Sunny_Days                         2.009503   0.047899   41.953  < 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 50.08 on 11629 degrees of freedom
+## Multiple R-squared:  0.935,  Adjusted R-squared:  0.935 
+## F-statistic: 2.79e+04 on 6 and 11629 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Model diagnostics}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(better\_model)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{finalrmd_files/figure-latex/unnamed-chunk-1-20.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\CommentTok{\# Make predictions on the test data}
+\NormalTok{test\_predictions }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(better\_model, }\AttributeTok{newdata =}\NormalTok{ test1)}
+\NormalTok{test\_predictions}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         6         7        13        15        17        21        22        30 
+##  691.9189  561.3199 1057.3166  942.0232  436.4014  633.6825  937.9059  217.8518 
+##        34        36        39        41        45        50        54        55 
+##  553.5865  814.8347 1055.8556  589.7105  969.9532  892.8740  445.6301  879.9193 
+##        56        58        66        76        82        86        88        99 
+##  889.3092  526.4124  764.2961  714.6751  376.4457  812.6091  869.9767  291.7395 
+##       100       101       106       110       116       118       120       122 
+##  837.3087  693.9250  835.3688  534.5693  536.2597  996.4083  447.5755  673.5485 
+##       125       126       129       134       150       167       168       174 
+##  864.2986  883.9196  577.8756  757.1767  861.0152  399.8776  763.3720  752.8100 
+##       185       190       191       193       202       205       208       209 
+##  524.6652  712.6309  666.2599  702.3887  668.4708  481.3893  903.1467  770.4932 
+##       211       214       217       222       223       224       226       229 
+##  796.4261  693.5614  794.7521  841.4119  958.1461  727.5843  528.4321  894.1111 
+##       233       238       248       254       260       263       270       275 
+##  968.3874 1021.2726  864.7048  887.4031  442.1672  706.0005 1007.8100  870.3956 
+##       277       282       284       293       294       295       297       299 
+##  615.6602  857.5491  799.7994  808.5767  210.7942  798.7908  714.8812  825.0910 
+##       300       307       309       310       315       319       321       329 
+##  616.8474  828.4649  765.9768  744.8208  862.5978  684.8564  264.8185  808.4255 
+##       341       342       345       349       352       354       358       364 
+##  644.2543  506.0586 1191.7408 1004.8697  712.7825  705.9969  839.4234  737.0298 
+##       368       375       380       381       391       395       399       400 
+##  386.2277  413.8665  968.8767  479.8087  994.4931  378.4110  844.8049 1057.6062 
+##       401       402       404       406       407       416       419       421 
+##  573.9010  657.0138  826.6033  872.3311  467.8873  900.3688  977.3393  395.4804 
+##       422       423       426       427       429       430       438       445 
+##  654.7642  929.1412  680.8336  544.2389  879.6705  823.7197  636.2481  691.1955 
+##       447       448       454       456       466       474       478       481 
+##  694.9581  880.6489  446.3678  850.0972  764.8646  927.2914  718.8443  679.4496 
+##       487       489       494       495       499       505       507       510 
+##  561.8213  732.8842  853.3833  703.1939  789.7864  729.0304  544.7593  681.0918 
+##       514       520       522       523       524       529       532       536 
+##  743.8262  993.7406 1039.4656  599.0220  560.0674  889.9728  767.0854  804.7934 
+##       537       541       548       550       558       562       565       568 
+##  540.6278  901.0221  800.5073  460.1876  532.3655  323.1443  556.4009  690.8991 
+##       569       578       583       585       590       598       602       603 
+##  768.1244  394.0878  967.6540  375.9136  407.5690  926.6302  667.4423  751.1816 
+##       604       613       617       623       624       633       636       638 
+##  874.7603  851.0272  655.5367  752.6513  605.1562  915.3345  407.1051  997.7515 
+##       642       662       666       673       679       687       688       692 
+##  834.5929  620.6106 1005.6513  787.7241  849.4474  745.7445  340.2120  493.8663 
+##       700       701       708       718       723       724       725       731 
+##  703.9915  763.1425  459.4706  706.5827  913.7600  981.8437  717.3282  690.7550 
+##       749       756       759       763       767       768       769       772 
+##  762.2857  884.1641  759.3567  670.4619  497.4467  883.6036  950.5447  613.3730 
+##       778       782       792       799       800       812       816       823 
+##  693.7784  727.8390  605.1987  933.6606  557.7151  843.6492  538.8945  504.4123 
+##       828       831       832       835       836       837       839       840 
+##  782.8423  772.1632  711.0894  708.1024  672.1245 1011.8237  295.9100  873.1501 
+##       842       845       849       851       853       854       857       858 
+##  915.0256  338.7755  889.4924  662.2393  963.5274  825.0871  857.2908  646.3324 
+##       862       867       873       874       878       879       880       888 
+##  549.1096  314.7224  400.8377  936.0601  712.0159  504.8667  592.8120  646.0904 
+##       900       902       911       912       914       916       917       921 
+##  439.1086  651.5830  544.6133  488.1543  849.3782  679.0548  754.3240  855.3016 
+##       928       933       937       942       943       948       950       956 
+##  833.9790  589.0106  776.5696  840.7469  565.9959  736.8848  950.3691  862.3129 
+##       957       963       965       975       976       977       978       981 
+##  257.6458  880.8166  589.3434  696.5711  920.7667  816.1228  686.6804 1006.4432 
+##       982       983       986       988       989       991       993       996 
+##  555.5893  637.6101  458.4639  551.9263  942.6440  623.9661  894.8868  728.2145 
+##       997       998       999      1002      1007      1009      1013      1020 
+##  723.5138  704.8655  585.4160  637.7210  899.6225  447.9686  851.8891  418.1041 
+##      1021      1035      1040      1043      1049      1051      1065      1067 
+##  618.5130  953.8418  493.8539  751.2861  235.7994  638.6251  642.3693  616.4410 
+##      1069      1070      1073      1077      1079      1080      1091      1102 
+##  460.5415  605.5342  393.3442  992.7648  617.7260  876.6078  848.3228  724.3841 
+##      1104      1106      1108      1111      1121      1123      1133      1136 
+##  674.4329  712.5241  910.4507  857.9692  648.1126  230.1188  783.8694  518.1196 
+##      1139      1148      1155      1156      1160      1163      1166      1172 
+##  905.5423  923.0545  888.5623  968.6981  746.6561  467.6941  676.7318  701.1184 
+##      1173      1177      1178      1180      1185      1187      1191      1192 
+##  762.3417  900.1100  915.4324  966.4779  881.0103 1037.1121  531.8452  663.4645 
+##      1197      1198      1202      1204      1207      1209      1214      1215 
+##  533.0384  900.1897  504.0896  360.0140  478.8007  798.0413  869.6981  504.4501 
+##      1216      1217      1218      1223      1225      1229      1239      1243 
+##  469.6807 1034.3316  743.5494  746.1747  859.6701  505.9951  913.4749  961.5299 
+##      1246      1250      1256      1259      1265      1272      1273      1277 
+##  424.9853 1001.2717  695.8004  734.2696  705.3944  617.9116  593.9139  939.9384 
+##      1280      1303      1305      1306      1312      1317      1322      1323 
+##  824.6239  361.2399  703.5067  726.5655  864.5209  859.2048  869.7649  412.1971 
+##      1325      1327      1330      1340      1341      1344      1348      1351 
+##  900.1405  878.1642  535.8321  582.7776  840.1978  844.3786  729.2946  426.9250 
+##      1354      1355      1356      1357      1358      1359      1362      1364 
+##  316.7680  554.4333  753.7217  586.2870  640.7970  688.2841  745.6485  741.9231 
+##      1366      1370      1371      1373      1375      1376      1383      1386 
+##  941.9164  449.3681 1017.6654  842.2818  624.7917  931.7721  824.7958 1159.5563 
+##      1388      1390      1396      1397      1409      1419      1420      1423 
+##  800.2242  748.8380  695.5307  709.7393  579.6167  590.5378  686.5561  431.9409 
+##      1426      1427      1432      1434      1439      1441      1444      1446 
+##  797.5382  367.5939  856.1611  834.2620  958.9180  789.4948  954.3408  952.7061 
+##      1452      1453      1461      1464      1467      1469      1471      1475 
+##  977.5700  383.7185  385.8967  806.2816  800.3639 1007.8078 1160.7035  832.4130 
+##      1476      1481      1497      1499      1512      1516      1519      1524 
+##  772.4034  622.5755  901.3969  789.4577  754.5254  375.4630  405.9494  535.7834 
+##      1525      1526      1529      1534      1539      1541      1543      1550 
+##  734.2732 1051.1573  449.4757  519.6397  598.2377  784.9576  796.9707  752.1796 
+##      1554      1557      1558      1566      1572      1575      1581      1583 
+##  795.4684  791.0878  664.0804  642.7377  867.7544  182.8762  753.6294  249.4478 
+##      1584      1586      1590      1598      1606      1607      1608      1610 
+##  563.8962 1018.5796  877.7730  582.5150  448.1140  473.6321  608.8041 1076.5710 
+##      1619      1622      1632      1640      1644      1649      1653      1660 
+##  753.9509  805.3710  752.2325  979.2949  597.8020  955.5126  873.7933  858.5828 
+##      1661      1669      1679      1682      1684      1687      1694      1696 
+##  486.0585  613.8202  797.6421  483.8735  723.2705  767.6813  951.6055  407.2595 
+##      1700      1702      1706      1710      1712      1715      1717      1718 
+##  989.6221  720.9818  879.2917  834.9141  922.4552  486.8218  911.3226  639.1499 
+##      1719      1724      1726      1727      1729      1731      1732      1738 
+##  355.7586  799.9073 1060.4127  759.5199  865.0473 1026.4797 1145.9106  903.3831 
+##      1741      1750      1760      1762      1764      1767      1768      1774 
+##  761.8647  845.6507  819.8950  761.8386  419.5852  503.2892  666.1837  896.3733 
+##      1775      1779      1787      1788      1798      1809      1823      1827 
+##  476.6835  690.2431  460.9138  901.1087  836.3102  858.4587 1019.1646  291.1762 
+##      1829      1836      1838      1839      1841      1843      1845      1849 
+##  776.0712  594.7003  884.7690  756.8848  805.7775  643.2296  645.6549  738.5530 
+##      1852      1857      1861      1864      1874      1875      1878      1881 
+##  744.1914  857.9399  661.0026  765.1920  683.4865  826.0812  722.2422  979.4580 
+##      1887      1889      1891      1892      1894      1895      1903      1909 
+##  725.0112  799.2579  450.0515  673.4585  630.2679  644.9612  855.1926  687.2241 
+##      1912      1915      1920      1928      1929      1930      1942      1943 
+##  679.2004  816.3032  631.2801  722.2690  837.7009  909.0885  900.1831  831.3807 
+##      1944      1947      1963      1967      1968      1974      1975      1977 
+##  897.8971  864.4193  908.6860  623.6648 1018.1614  619.5765  879.3407  671.7841 
+##      1978      1988      1998      2003      2008      2011      2012      2013 
+##  836.8445  848.1965  482.7487  529.7855  469.0088  583.7999  953.8877  616.4303 
+##      2017      2021      2024      2025      2038      2039      2041      2044 
+##  785.8229  379.5743  746.6601  736.8962  816.2317  634.0085  686.8866  748.3398 
+##      2049      2054      2061      2064      2066      2068      2073      2076 
+##  770.7663  798.4308  361.3355  780.0880  887.2653  693.4392 1049.8891  448.8861 
+##      2077      2079      2083      2084      2087      2096      2103      2104 
+##  358.0137 1070.4148  641.5897  600.5141  716.2119  878.1117  933.0555  653.5649 
+##      2111      2117      2119      2121      2125      2126      2127      2130 
+##  905.1944  869.3853  626.9022  997.5238  425.4717  337.2402  850.9636  859.4302 
+##      2133      2134      2150      2158      2163      2166      2167      2169 
+##  717.0821  721.8509  972.2724  880.4672  696.7555  314.8199  519.4070  936.8426 
+##      2172      2174      2183      2185      2188      2190      2195      2200 
+##  943.9756  792.8317  897.1186  539.0911  681.5893  524.8180  586.9041  529.5955 
+##      2201      2202      2203      2215      2216      2218      2224      2226 
+##  819.3360  970.3483 1004.3655 1011.3352  678.7143  762.8995  873.9584  608.7672 
+##      2232      2233      2235      2243      2244      2256      2260      2262 
+##  657.7047  980.3606  615.3785  696.8349  641.1388 1000.5747  291.7038  495.3983 
+##      2273      2275      2276      2281      2282      2284      2286      2288 
+##  583.0439  795.2213  643.2628  478.6111  523.9040  760.8474  830.6349  593.6374 
+##      2292      2294      2297      2303      2305      2307      2310      2311 
+##  773.2101  804.3139  849.5878  480.9454  708.5447  838.0291  759.3720  754.6952 
+##      2312      2317      2330      2331      2335      2337      2341      2342 
+##  701.8414  673.4705  463.3539 1064.5753  595.1168 1057.2988  859.9665  882.9989 
+##      2348      2358      2361      2365      2366      2369      2371      2373 
+##  796.2886 1059.3553  654.9537  652.7986  690.6337  544.7026  829.0061  905.8196 
+##      2382      2384      2389      2395      2396      2398      2401      2404 
+##  550.1818  685.5567  946.2563  847.3225  764.3674  846.8617  762.1414  978.3500 
+##      2406      2408      2410      2418      2421      2422      2423      2426 
+##  892.0830  709.8070  599.6527  656.5140  361.6094  921.4065  366.2531  320.1760 
+##      2427      2435      2436      2440      2444      2445      2448      2449 
+##  773.9819  940.2039  676.6337  310.3214 1037.3800  828.8555  826.6214  484.8357 
+##      2450      2454      2457      2459      2461      2462      2465      2466 
+##  550.8563 1104.0522  855.6288  792.0836  892.8223  516.5379  463.5396 1077.3728 
+##      2472      2476      2480      2481      2489      2490      2491      2492 
+##  806.4935  855.5626  632.6557  580.6315  609.4071  802.5608  837.2083  758.9361 
+##      2497      2499      2502      2505      2507      2509      2511      2515 
+##  679.2896  693.3116  488.8195  580.1821  677.0361  784.3107  550.2174  701.5458 
+##      2521      2522      2523      2526      2528      2536      2537      2545 
+##  864.6449  570.0194  981.9462  710.0734  789.1347  736.6255  614.4498  548.4588 
+##      2547      2548      2553      2554      2563      2566      2567      2569 
+##  603.4446  719.5612  520.6554  575.4442  934.9785  441.5914  879.0190  656.8546 
+##      2570      2579      2584      2587      2596      2599      2604      2612 
+##  778.1844  410.6640  565.2549  519.8528  450.6273  588.8464  746.1177  579.4412 
+##      2618      2621      2631      2638      2639      2640      2641      2644 
+##  615.4540  317.5523  778.2838  770.9495  832.7278  488.1624  534.6354  684.0800 
+##      2645      2647      2650      2652      2657      2664      2665      2667 
+##  666.1873 1017.0822  800.5518  381.7451  853.5715 1063.4727  559.9617  467.7789 
+##      2672      2673      2676      2678      2683      2684      2695      2699 
+##  708.5557  540.6108  560.0058  906.6537  731.5564  328.3347  852.8103  973.2147 
+##      2700      2704      2705      2722      2725      2730      2731      2732 
+##  740.2187  457.3711  897.1586  704.4873  613.0935  648.1804  698.9288  725.1895 
+##      2735      2744      2748      2751      2755      2756      2759      2760 
+##  585.6649  663.1264  741.5533 1077.4963  835.5313  879.1477  825.9746 1051.5754 
+##      2761      2762      2766      2767      2772      2783      2788      2789 
+##  533.8878  751.8661  842.2384  430.3240  948.4616  945.1804  631.6101  873.2025 
+##      2790      2791      2799      2804      2807      2808      2815      2816 
+##  550.2559  678.0370  780.5796  647.6077  615.8583  461.3888  537.6066  802.5167 
+##      2825      2826      2829      2830      2831      2841      2851      2853 
+##  775.4469  707.4216  662.5261  978.6318  889.1235  711.6881  734.2581  813.3338 
+##      2855      2857      2863      2869      2877      2879      2880      2883 
+##  616.0585  808.3123  756.3394  440.5352  498.1845 1041.4473  545.0500 1017.0084 
+##      2885      2887      2891      2895      2897      2900      2902      2905 
+## 1038.9329  421.9367  756.0153  763.8400  770.6432  927.8748  806.5615  819.8161 
+##      2907      2908      2910      2911      2915      2924      2928      2931 
+##  903.0048  494.3936  942.1056  579.8729  961.8735  562.7873  930.8465  725.4164 
+##      2932      2942      2954      2961      2963      2966      2973      2980 
+##  863.4081  392.2988  966.0298  403.4578  298.7932  691.6959  882.0649  849.5259 
+##      2981      2986      2989      2992      2996      2997      3006      3008 
+##  769.8771 1019.5541  997.4770  439.8312 1153.7053  942.2659  710.0488  998.6270 
+##      3009      3010      3012      3013      3014      3022      3052      3056 
+##  274.4156  828.2450  621.2908  460.8600  772.1205  657.3391  850.7264  759.2994 
+##      3058      3061      3064      3069      3076      3077      3085      3086 
+##  640.7507  431.9126  792.0758  582.4787  897.6048  595.3584  400.7731  688.7224 
+##      3088      3092      3094      3097      3098      3107      3114      3116 
+##  836.2504  756.0413  686.9974  549.9390  783.2827 1139.0061  540.5124  982.3068 
+##      3118      3123      3124      3126      3130      3131      3134      3136 
+##  931.6978  458.0212  589.0096  935.8408  804.2898  714.4358  776.4223  759.8672 
+##      3140      3144      3155      3157      3158      3166      3167      3180 
+##  524.1236  645.2746  560.8070  816.9154  312.3672 1111.7819  909.4504  883.2349 
+##      3186      3198      3199      3212      3213      3224      3226      3233 
+##  767.7558 1121.6701  399.3522  901.7106  654.4877  812.1511  618.6043  459.7270 
+##      3236      3238      3239      3240      3241      3242      3243      3247 
+##  706.1356  708.1920  717.4299  531.3187  369.1371  905.7179 1011.1527  765.5000 
+##      3256      3259      3260      3262      3263      3264      3271      3275 
+##  718.4920 1035.8738  704.6056  443.6453  694.9391  772.6592  755.9002  939.6413 
+##      3277      3285      3290      3292      3293      3294      3297      3298 
+## 1159.7997 1047.8948  851.8661  867.8589  504.1386  706.1906 1130.9421  653.3176 
+##      3307      3308      3310      3315      3317      3318      3319      3335 
+##  988.2459  805.6784  482.7920  810.7563  881.7723  680.8491  484.2144  779.7167 
+##      3338      3346      3350      3352      3355      3356      3359      3364 
+##  585.5629  393.7788  696.0664  720.7870  782.6039  694.3962  831.0654 1026.7693 
+##      3365      3374      3380      3381      3386      3387      3388      3390 
+##  953.0282  526.8800  641.3952  872.8775  742.8718  603.1007  525.4509  822.8488 
+##      3392      3393      3394      3397      3403      3416      3421      3422 
+##  563.6258  727.5601  812.0461  284.5668  505.9808 1022.6076  487.1305  637.9759 
+##      3427      3428      3444      3445      3446      3454      3458      3462 
+##  406.4692  925.8848  811.1507  861.1541  939.4326  291.0077  668.5494  898.9949 
+##      3469      3473      3482      3483      3485      3486      3496      3497 
+##  626.0033  901.1288  816.6899  722.0781  710.9480  795.1399  290.8042  718.6987 
+##      3502      3505      3506      3518      3519      3520      3527      3530 
+##  720.9866  521.0412  637.9994  610.7240  627.8132  741.2639  759.7371  766.7390 
+##      3536      3538      3542      3544      3545      3546      3549      3554 
+##  458.7063  499.9210  842.2396  499.9070  897.2155  570.9341  799.7080  555.2261 
+##      3555      3560      3570      3571      3575      3582      3583      3585 
+##  830.5189  902.1806  724.7820  889.2334  881.2098  716.3815  843.3595  885.3307 
+##      3587      3589      3594      3598      3599      3601      3604      3606 
+##  829.9994  701.5691  564.6733  896.1810  216.0012  571.9972  933.6974  799.9398 
+##      3608      3610      3619      3621      3625      3627      3631      3636 
+##  828.2390  320.4342  474.8088  765.1223  928.9360  530.2910  702.3317  598.3010 
+##      3644      3646      3651      3654      3657      3659      3662      3667 
+##  774.4134  690.1799  943.5073  712.9183  763.3162  996.0449  628.5942  416.7757 
+##      3670      3672      3673      3676      3680      3684      3686      3701 
+##  631.4380  761.8639  734.8744  871.9958  828.2131 1078.5511  945.6759  351.0173 
+##      3718      3721      3724      3725      3731      3734      3738      3744 
+##  765.0923  784.6810  818.7440  793.6686 1060.0444  565.3537  947.6961 1020.2874 
+##      3752      3762      3767      3769      3771      3772      3773      3774 
+##  874.5735  558.2312  827.9393  791.0310  808.0266  695.3344  888.7181  852.6043 
+##      3776      3782      3787      3791      3794      3795      3797      3799 
+##  763.3774  901.0501  561.1317  343.6372  923.8196  925.9494  347.1770  916.1066 
+##      3800      3801      3811      3812      3813      3816      3817      3821 
+##  987.9848  523.6423  881.2063  678.7399  358.3203  779.5082  563.9967  272.4001 
+##      3822      3825      3826      3827      3831      3833      3834      3840 
+##  332.7072  941.1541  340.3962  885.2763  859.1243  681.4574  803.3549  610.7482 
+##      3841      3845      3848      3850      3851      3854      3856      3861 
+##  955.9585  809.2520  726.4281  600.3783  906.0387  685.2040  948.5907  670.4081 
+##      3865      3870      3885      3886      3892      3893      3895      3898 
+##  785.5553  455.1857  517.6790 1003.7025  371.2845  812.5702  889.0779  621.5386 
+##      3906      3909      3912      3920      3928      3930      3932      3937 
+##  540.3212  834.7093  354.7744  664.7820  705.7361  850.3743  648.0952  532.8084 
+##      3940      3944      3946      3948      3952      3953      3959      3962 
+##  456.7350  975.0365  720.0401  679.3580  813.1158  763.5555  894.7967  642.5224 
+##      3963      3964      3971      3972      3976      3987      3990      3995 
+##  550.1541  583.2808  529.8105  995.9505  816.5023 1075.4156 1167.8694  374.7383 
+##      3998      3999      4005      4007      4010      4030      4033      4047 
+##  812.2821  759.6467  898.4169  628.7627  567.9583  377.1437  738.8606  897.8324 
+##      4055      4057      4058      4059      4064      4068      4074      4076 
+##  695.4769  933.8624  841.5808  665.9671  630.9106  671.7908  564.5993  582.4249 
+##      4077      4082      4084      4085      4088      4091      4098      4105 
+##  311.2335  941.9058  591.2304  709.8244  995.6865  323.8406  505.8103  606.0468 
+##      4107      4111      4120      4123      4132      4134      4137      4139 
+##  771.3049  703.6628  866.5735  564.8624  985.6021  567.2784  388.9738  697.7953 
+##      4149      4150      4151      4153      4156      4163      4166      4167 
+##  755.8289  580.7354  258.3340  276.2073  616.9488  496.2086  695.8665  469.3785 
+##      4168      4171      4174      4180      4186      4209      4211      4216 
+##  858.4595 1006.9067  837.2808  838.0429  458.2201  610.8756  749.1656  734.7824 
+##      4227      4230      4232      4233      4235      4236      4247      4248 
+##  814.9476  513.6619  930.9586  908.8498  697.6133  790.5601  358.0012  516.5125 
+##      4250      4252      4253      4259      4260      4270      4271      4272 
+##  911.7566  435.8085 1097.6389  771.1225  728.0313  813.6394  816.0275  823.1493 
+##      4276      4278      4288      4290      4293      4298      4301      4304 
+##  600.3315  836.5205  335.7554  942.9822  799.0713  757.6767  659.5304  846.0190 
+##      4306      4308      4309      4310      4313      4314      4322      4323 
+##  773.4193  564.9457  783.3229  432.4321 1082.2835  740.7243  743.3761  473.3678 
+##      4328      4330      4333      4334      4345      4347      4365      4367 
+##  790.9473  537.2251  925.5816  666.0722  615.8269  828.8833  932.0669  580.1541 
+##      4368      4373      4376      4378      4380      4381      4389      4395 
+##  644.1707  595.2886  782.0709  797.3415  603.5948  740.5885  811.0345  636.2339 
+##      4396      4398      4400      4402      4403      4406      4412      4414 
+##  666.1882  517.1206  466.6148  496.9497 1038.4817  610.2223 1027.2189  594.4589 
+##      4415      4416      4421      4428      4429      4433      4434      4435 
+##  490.1502  429.7161  756.7997  358.7378  631.0145  833.4681  301.1232  492.9816 
+##      4440      4444      4453      4458      4488      4490      4491      4495 
+##  451.1906  792.0436  658.8697  601.2238  860.1723  607.6943 1045.3763  386.1234 
+##      4496      4498      4506      4507      4512      4517      4519      4522 
+##  321.9821  620.5277  517.4732  748.4190  781.7810  376.4457  760.7544  797.3218 
+##      4524      4527      4528      4529      4530      4535      4549      4556 
+##  430.0481  471.2086  674.4801  421.9661  939.1978  602.4767  368.6585  897.7665 
+##      4559      4560      4564      4568      4574      4587      4598      4602 
+##  797.9848  884.9785  698.7095  887.4309  688.5877  767.7221  772.3470  508.4073 
+##      4603      4606      4608      4615      4616      4622      4628      4629 
+##  794.7961  614.5781  722.3847  877.0737  713.4906  597.6062  369.5323  540.0974 
+##      4630      4634      4638      4639      4642      4643      4647      4649 
+##  735.1630  686.4070  834.7648  849.7300  868.8127  856.7474  300.7090  815.8340 
+##      4653      4660      4665      4666      4668      4669      4670      4680 
+##  724.2178  612.5750 1003.9009  676.9591  841.8903  549.9383  907.7230  381.2794 
+##      4682      4684      4688      4691      4694      4696      4697      4707 
+## 1026.3083  926.5400  879.6863  777.0446  806.5717 1042.1497  711.6349  884.5625 
+##      4715      4717      4718      4719      4723      4725      4729      4732 
+##  857.0005  834.2493  433.2576  658.2797 1038.1034  790.9322  729.1773  808.3884 
+##      4733      4734      4738      4740      4745      4754      4759      4765 
+##  844.2434  528.9973  731.5858  359.8362  478.7340  447.7699 1021.0364  573.2948 
+##      4766      4768      4770      4776      4777      4782      4784      4787 
+##  733.3428  764.7453  604.3238  366.6804  912.6640  699.5690  295.4640  533.3169 
+##      4792      4800      4805      4808      4812      4819      4820      4821 
+##  754.9189 1074.2420  642.4565  826.8344  769.3345  425.3920  425.8478  917.1736 
+##      4822      4829      4836      4838      4842      4844      4848      4850 
+##  691.6190  882.5059  748.8887  551.7343  518.6666  914.4126  913.1901  748.9476 
+##      4853      4858      4863      4864      4866      4868      4869      4872 
+##  534.7150  453.1876  843.0569  271.5119  402.6545  748.2353  839.6010  323.9909 
+##      4874      4879      4881      4885      4886      4887      4890      4896 
+##  526.0956  810.7044  591.7341  730.7425  870.9690  319.9225  864.2033  724.8512 
+##      4897      4901      4905      4908      4914      4915      4916      4921 
+##  972.5425  804.9443  984.7456  843.8333  493.6683  690.8205  745.1257  489.3142 
+##      4924      4928      4934      4946      4953      4954      4967      4968 
+##  282.5898  558.6197  893.9568  811.4247  872.4303 1020.8741  748.1585  671.1691 
+##      4969      4981      4982      4990      4993      4996      4999      5009 
+##  641.2294  474.2314  936.4586  336.6636  654.1227  812.8051  786.4706  880.5664 
+##      5012      5014      5018      5021      5023      5025      5026      5031 
+##  749.5374  586.4256  927.8619  490.8328  778.2731  594.3679  897.1853  737.7204 
+##      5046      5048      5067      5070      5074      5084      5085      5087 
+##  851.0699  270.1029  798.5765 1013.1809  445.2326  834.0008  382.9976  803.7067 
+##      5088      5093      5095      5099      5102      5103      5107      5109 
+##  405.6901  911.2983  612.1583  883.6870  915.7147  813.7377  793.5459  720.4395 
+##      5110      5114      5120      5128      5131      5140      5144      5145 
+##  702.7073  840.3195 1005.9577  500.7734  295.4510 1082.9756  431.2219  514.2306 
+##      5151      5161      5167      5171      5179      5181      5184      5201 
+##  629.8451 1025.2894  237.1174  433.5498  833.2617  829.4590  607.9377  750.9126 
+##      5205      5207      5209      5211      5218      5220      5223      5225 
+##  289.4358  957.8679  339.8986  972.1820  634.6157  904.4198  526.3026  627.5541 
+##      5227      5237      5249      5257      5259      5260      5261      5268 
+##  784.5354  552.9800  859.8203  616.0161  927.0224  507.6269  349.8715  568.0684 
+##      5272      5288      5291      5296      5297      5299      5300      5302 
+##  625.7169  762.0708  852.6172  464.6052  832.6709  597.4590  474.8502  440.3055 
+##      5304      5306      5310      5311      5312      5313      5330      5333 
+##  790.7837  718.5191  501.4485  793.3160  882.9957  601.5805  400.5386  789.9478 
+##      5339      5340      5344      5349      5351      5354      5360      5368 
+##  511.0978 1022.7290  435.1801  382.7660  452.5736  726.5159  481.4267  499.6469 
+##      5370      5373      5379      5382      5385      5387      5392      5395 
+##  863.0115  695.8043  649.9502  877.7985  829.8984  960.7762  632.3952  516.3216 
+##      5396      5406      5407      5411      5412      5413      5416      5422 
+##  768.9335  681.6552  886.6249  802.3250  682.4018  831.4446  593.4267  655.6569 
+##      5424      5425      5429      5435      5436      5440      5445      5447 
+##  554.9060  749.5863  929.5907  916.1735  339.1540  727.4907  470.8441  809.2430 
+##      5449      5450      5461      5464      5467      5469      5474      5479 
+##  798.1933  902.1355  733.9692  872.6441  586.2248  755.3044  583.7908  651.9121 
+##      5486      5497      5498      5500      5506      5507      5509      5510 
+##  965.0102 1159.7726  573.8729  779.0424  695.6532  514.8416  862.0608  967.7979 
+##      5520      5524      5525      5526      5527      5533      5541      5546 
+##  761.1532  516.0540  721.4671  830.5231  645.3057  765.0423  815.8711  898.0910 
+##      5548      5555      5562      5566      5567      5568      5574      5581 
+##  807.5415  703.5819  691.0300  688.2716  932.1148  767.6692  610.3481  997.0241 
+##      5583      5584      5591      5594      5598      5607      5613      5615 
+##  556.7095  565.2751 1128.3025  932.2116  785.6754  711.0999  620.7328  901.1336 
+##      5625      5627      5634      5637      5646      5647      5654      5657 
+##  263.9081  825.5199  765.3556  744.0609 1010.6817  786.0769  821.5221  571.7860 
+##      5670      5673      5678      5682      5685      5687      5692      5693 
+##  403.0498  755.2846  311.7126  918.5995  695.4580  671.3849  681.9260  522.1862 
+##      5695      5705      5708      5713      5716      5719      5724      5725 
+##  980.3404  651.0361  984.1956  526.2601  664.2059  545.2584  808.6128  682.4338 
+##      5730      5734      5739      5740      5744      5746      5756      5758 
+##  823.1845  614.9437  824.2338  439.7718  477.2937  594.9655  685.9750  881.5615 
+##      5760      5761      5762      5763      5771      5774      5778      5782 
+##  662.2201  719.0171  334.7538  594.4984  673.3622 1075.6110  920.5672  830.5601 
+##      5785      5793      5796      5798      5810      5812      5814      5827 
+##  407.2058  941.6435  317.1771  930.7494  978.7862  777.2182  491.9036  890.4378 
+##      5842      5846      5847      5849      5854      5855      5856      5857 
+##  678.2435  718.5284  854.1646  857.2827  941.7761  452.6851  800.9401  715.6905 
+##      5863      5869      5872      5873      5874      5884      5885      5889 
+##  613.8550  377.4429  288.6715  668.9460  785.7917  601.1035  270.7371  897.6643 
+##      5896      5899      5904      5912      5915      5916      5918      5920 
+##  743.2730  939.0962  841.8672  987.1304  530.9825  843.4135  700.2818 1002.4014 
+##      5931      5944      5951      5953      5960      5961      5967      5972 
+##  945.7446  875.1869 1181.1947  513.1551  770.6559  864.2913  449.7086  627.6990 
+##      5974      5976      5982      5989      5991      5996      5997      6002 
+##  526.7726  812.3223  542.9649  746.5244  688.7024  760.7963  835.3558  231.1918 
+##      6010      6012      6013      6019      6022      6025      6027      6029 
+##  784.6158  823.4495  904.8755  710.9417  983.1751  497.1543  603.7920  452.0365 
+##      6037      6038      6039      6048      6053      6054      6056      6058 
+##  447.1536 1004.2064  866.5428  769.6513  723.0879  654.2371  625.5761  857.1468 
+##      6062      6070      6077      6080      6089      6091      6095      6100 
+##  590.3632  529.8875  527.0286  813.3818  782.6005  805.2975  459.9704  377.6271 
+##      6105      6110      6116      6120      6122      6123      6124      6126 
+##  360.7637  904.5983  546.2315 1043.3843 1011.9963  459.0576  976.8513  870.3596 
+##      6127      6139      6140      6143      6146      6164      6170      6179 
+##  496.0897  824.6214 1110.6665  983.8812  501.9751  622.2069  527.9124  576.5230 
+##      6182      6184      6191      6194      6195      6200      6208      6213 
+##  860.6721  652.7248  986.0157 1109.9705  854.2027  827.7896  753.2940  655.7708 
+##      6220      6226      6227      6233      6234      6238      6239      6240 
+##  733.4920  805.0209  554.3346  789.9030  645.7121  801.5776  368.5356  765.1402 
+##      6243      6247      6248      6250      6256      6261      6263      6265 
+##  986.9447  717.9161  207.1133  817.4270  853.8176  943.7698  757.2886  552.8844 
+##      6268      6271      6274      6278      6281      6282      6284      6285 
+##  592.4959  479.2548  995.2717  917.7930  602.2623  834.2685  665.8993  320.8315 
+##      6286      6287      6292      6297      6300      6305      6306      6308 
+##  879.7371  769.4709  920.7717  639.2720  844.6312  731.9095  873.0248  728.3698 
+##      6310      6311      6313      6314      6317      6320      6322      6323 
+##  929.1489  365.6762  740.9604  766.9850  957.5572  611.9574  751.8097  641.1990 
+##      6336      6340      6343      6350      6353      6354      6357      6358 
+##  743.3730  421.6922  718.0779  827.4195  725.0360  812.1033  865.5197  846.3607 
+##      6360      6375      6379      6383      6385      6387      6388      6396 
+##  794.0974  361.2192  815.6418  747.9204  727.4068  744.0545  413.0945 1054.3645 
+##      6405      6408      6412      6429      6436      6437      6445      6447 
+##  517.6368  576.5782  836.3660 1113.3164  602.9856  830.3831  238.5117  672.3232 
+##      6449      6452      6458      6461      6462      6470      6479      6481 
+##  725.7114  616.7887  889.6922  883.2990  730.0075  707.8877  469.9525 1186.1558 
+##      6482      6490      6504      6507      6508      6510      6511      6513 
+##  803.4830  565.1001  682.7824  669.5817  357.9267  331.7905 1099.7223  788.9688 
+##      6518      6521      6533      6544      6549      6552      6553      6555 
+##  899.3520  668.1074  419.3983  652.4181  896.2975  701.9295  608.8440  591.1160 
+##      6556      6562      6565      6571      6572      6582      6587      6588 
+##  941.6041  281.7444  737.9212  218.6248  626.7828  705.3241  799.8589  500.6953 
+##      6592      6597      6598      6608      6611      6619      6630      6631 
+##  734.1778  890.0937  463.0127  435.8125  796.9204  927.6768  858.5546 1030.8138 
+##      6632      6634      6641      6649      6654      6657      6665      6669 
+##  496.2947  668.4962  744.1724  463.7625  681.9063  670.6905  498.2131  740.2728 
+##      6674      6676      6678      6687      6689      6701      6702      6703 
+##  767.0422  773.8442  795.2107  390.0600  913.9600  928.3203  682.4105  624.7090 
+##      6705      6707      6711      6714      6720      6721      6726      6727 
+##  632.5888  411.6187  305.2871  856.1805  494.3329  918.7657  527.5334  347.5257 
+##      6728      6729      6740      6745      6747      6749      6756      6757 
+##  487.6198  953.7747  703.3362  957.9193  813.0521  459.3039  670.2402  422.7064 
+##      6760      6761      6767      6775      6776      6781      6782      6793 
+##  652.1109  682.9839  533.4451  265.6485  735.3203  746.2605  881.3642  628.8721 
+##      6795      6796      6799      6800      6803      6806      6810      6811 
+##  641.4700  502.3655  902.2003  905.2380  824.3117  450.9860  611.8592 1002.4285 
+##      6815      6819      6820      6823      6827      6829      6831      6832 
+##  619.7620  895.9678  736.5636  555.3910  631.6367  908.7120  691.1494  759.4748 
+##      6833      6834      6838      6840      6844      6848      6854      6856 
+##  485.1414  842.5702  715.8943  851.0272  621.6339  520.4173  686.2971  645.7883 
+##      6857      6862      6865      6870      6873      6875      6882      6890 
+##  706.2827  647.6300  812.3453  794.9501  312.2587  457.7678  767.1404 1138.8238 
+##      6892      6894      6896      6899      6901      6906      6912      6920 
+##  955.9787  579.7464  518.1727  644.5594  707.6483  850.6844  488.6283  820.0903 
+##      6922      6924      6925      6930      6933      6935      6940      6943 
+## 1085.6942  685.0834  630.8043  685.6519  840.3575  589.8240 1067.3438  709.3308 
+##      6944      6945      6950      6953      6955      6957      6958      6963 
+##  666.4129  857.5301  947.6565  982.9405  689.6356  746.2730  568.9253  908.1651 
+##      6968      6971      6973      6974      6975      6976      6978      6982 
+##  856.5644  631.6753  822.5647  444.9614  733.8648  665.4433  953.7384  662.3110 
+##      6985      6988      6990      7009      7013      7015      7019      7021 
+##  739.2385  705.9489  806.1557  755.4626  872.0982  814.3262 1074.2185 1023.4929 
+##      7022      7038      7047      7051      7052      7053      7054      7055 
+##  688.0139  854.3653  879.4107  636.7007  646.0732  802.6297  544.6725  538.1236 
+##      7056      7063      7069      7072      7073      7079      7086      7091 
+##  968.9497  607.7599  643.8189  742.3960  784.8623  998.5406  679.8556  721.2057 
+##      7093      7094      7098      7102      7105      7112      7118      7131 
+##  690.9683  815.3837  710.5038  778.3739  618.1613  752.2174  521.7278  680.9814 
+##      7133      7136      7142      7145      7149      7152      7166      7170 
+##  892.7737  658.7681  356.5176  953.1302  472.2017  864.7304  794.2321  535.5989 
+##      7183      7187      7188      7191      7193      7194      7199      7200 
+##  717.9634  398.2988  545.8160  431.9736  890.1451  892.7720  859.4006  715.6808 
+##      7205      7206      7208      7219      7221      7224      7229      7230 
+##  421.9206  600.1630  527.8561  650.7707  431.1677  915.4773  837.2036  351.3683 
+##      7245      7249      7258      7260      7261      7281      7286      7291 
+##  622.9195  480.4354  956.3609  790.0571  731.0767  889.9643  923.1488  462.3879 
+##      7293      7300      7302      7306      7309      7311      7313      7315 
+##  853.7919  511.4787  689.8681  320.3761  679.0528  748.5521  557.8294 1046.4159 
+##      7318      7323      7327      7328      7334      7339      7341      7348 
+##  994.4530  713.0514  725.8128  274.6603  934.0419  424.9547  790.5932  538.9741 
+##      7349      7375      7380      7384      7387      7390      7393      7396 
+##  823.3553  634.2397  919.6156  874.1346  710.2074  680.5673  575.9358 1061.3202 
+##      7402      7404      7417      7421      7424      7426      7427      7432 
+##  732.5230 1051.0942  594.2631  482.2119  789.0607  711.8756  395.4638  714.0401 
+##      7433      7435      7436      7439      7448      7450      7451      7453 
+##  799.3395  699.3141  809.0741  696.3482  387.3742  718.5635  509.7576  705.2799 
+##      7460      7462      7468      7470      7473      7475      7476      7486 
+##  897.9219  717.7897  474.4906  532.8108  765.7207  831.6803  678.3962  950.3681 
+##      7487      7488      7494      7508      7511      7515      7516      7518 
+##  875.7148  654.4584  772.4473  741.3247  883.0319  828.3659  603.0685  420.6124 
+##      7521      7526      7530      7533      7540      7547      7556      7560 
+##  891.8417  333.6187  825.0951  840.0793  799.1618  688.7069  500.5007  477.7601 
+##      7565      7568      7570      7571      7576      7581      7583      7594 
+##  754.9173  792.9943  479.0873  775.0332  675.1075  774.3936  912.0546  530.5079 
+##      7599      7602      7604      7607      7609      7610      7613      7624 
+##  947.8899  858.1890  640.8767  628.1224  731.5202  748.8498  732.9302  296.2042 
+##      7625      7630      7632      7636      7638      7644      7646      7647 
+##  676.6503  773.7657  619.7902  756.3419  866.4929 1095.1844  860.4660  956.7327 
+##      7653      7657      7661      7666      7675      7677      7686      7687 
+##  665.7842  452.9710 1011.9685  819.8016  405.0300  839.4774  370.4886  428.2010 
+##      7689      7699      7700      7702      7704      7714      7715      7720 
+##  694.8282  648.1908  763.6536  921.0919  653.2528  566.1071  541.3383  747.3523 
+##      7725      7728      7736      7737      7743      7749      7750      7752 
+##  606.0559  677.3568  708.0676 1078.3403  599.9648  424.1569  882.0938  753.5691 
+##      7755      7762      7770      7773      7779      7789      7797      7801 
+##  953.0923  899.1617  363.0205  915.6025  877.2614  650.0937  644.3569  561.6663 
+##      7805      7806      7808      7811      7818      7828      7829      7832 
+##  823.6180  435.9335  892.1970  446.7655  862.7986  840.0581  709.7047  877.2080 
+##      7833      7834      7839      7840      7845      7847      7852      7857 
+##  594.2097  683.0489  462.0981  450.8626  618.7977  722.7043  783.1674  660.4421 
+##      7859      7868      7872      7876      7879      7881      7883      7889 
+##  878.7630  776.0120  311.9814  837.0154  409.9647  448.9479  905.6506  675.0415 
+##      7893      7900      7901      7905      7910      7913      7914      7916 
+##  807.7683  959.8759  869.4097  744.0588 1004.6023  709.3508  934.8368  578.8105 
+##      7927      7928      7931      7933      7934      7941      7946      7955 
+##  551.9877  793.1273  443.8388  624.4843  796.9646  467.5712  964.8263  542.0338 
+##      7957      7962      7963      7970      7982      7983      7984      7989 
+##  778.6667  685.1584  661.2923  810.5586  516.1551  823.3837  760.1960  582.3019 
+##      7996      7999      8001      8003      8004      8006      8007      8009 
+##  547.3959  765.5826  803.3397  767.2817  751.7604  785.7766  420.3964  846.9808 
+##      8010      8011      8012      8013      8022      8025      8026      8029 
+##  765.1598  575.1704  600.4338  909.4364  511.9383  818.5035  860.3271  421.2288 
+##      8037      8041      8044      8052      8055      8059      8062      8071 
+##  803.5190  560.6666  810.2122  751.2708  808.5549  503.3844  788.8884  857.3215 
+##      8074      8079      8080      8087      8093      8096      8101      8107 
+##  660.0139  460.0399  527.1569  706.2291  999.1302  765.6153  840.9736  767.3365 
+##      8109      8110      8112      8114      8116      8142      8154      8162 
+##  258.8910  733.6844  614.6775  417.7721  708.6575  734.4818  498.4065  636.8062 
+##      8165      8179      8180      8182      8184      8185      8190      8192 
+##  484.3190  941.9803  912.7550  901.6755  900.5515  667.6671  771.4360  821.9612 
+##      8200      8207      8208      8213      8217      8218      8219      8222 
+##  618.0247  740.5336  949.0157  701.9947  340.6973  633.9329  682.1329 1018.1122 
+##      8228      8230      8234      8241      8248      8250      8252      8254 
+##  545.1285  507.5768  377.0060  588.5488  683.3952  451.2966  949.0475  603.3935 
+##      8263      8265      8274      8275      8276      8279      8284      8305 
+##  869.8695  466.5143  848.6877  749.7085  746.5568  493.4616  642.8413  533.2756 
+##      8310      8315      8323      8325      8327      8331      8332      8334 
+##  630.8893  464.1311  761.2574  646.3234  542.5956  825.1860  724.5653  822.4562 
+##      8336      8340      8344      8348      8353      8356      8369      8372 
+##  787.7589  951.8935  408.2433  685.4739  747.7398  477.3317  722.3645  525.2730 
+##      8378      8382      8389      8390      8406      8412      8415      8417 
+##  857.3335  896.4414  954.4478  656.0317  695.0895  599.4354  837.4503  782.9662 
+##      8425      8427      8430      8433      8439      8442      8450      8455 
+## 1038.2232  799.7535 1017.3510  825.4978  795.1017  936.0533  667.9272  641.1446 
+##      8465      8467      8470      8477      8478      8486      8488      8490 
+##  810.4456 1004.3879  500.2670  329.6105  568.3811  893.9869  808.3415  870.6267 
+##      8494      8498      8500      8502      8505      8520      8525      8531 
+##  876.9005  562.7828  652.5035  341.0741  650.8671  951.5001  691.0320  674.7361 
+##      8536      8537      8542      8544      8562      8571      8577      8581 
+##  309.2609  580.3005  709.6669  517.4539  825.6761  730.8074  814.4885  812.9250 
+##      8584      8589      8590      8598      8601      8602      8609      8623 
+##  422.9009  819.4617  502.2670  990.2905  751.4849  650.5969  914.1520  498.4795 
+##      8624      8626      8633      8639      8645      8650      8654      8656 
+##  888.7802  583.9875  735.2566  273.4975  876.6204  747.5356  824.0564  367.7865 
+##      8657      8661      8671      8676      8683      8684      8691      8693 
+##  503.6767  833.9389  914.8945  799.6355  864.2281  752.3515  780.0178  731.0664 
+##      8694      8696      8697      8705      8707      8708      8710      8711 
+##  294.0386  801.9615  764.6706  961.4508  971.8093  737.1325  657.7088  573.6253 
+##      8731      8748      8749      8751      8763      8769      8770      8771 
+##  436.1725  899.3101  835.9204  803.5133  780.0898  607.2556  580.9290  553.1829 
+##      8772      8782      8786      8787      8798      8816      8820      8823 
+##  563.0155  612.2919  547.5393  664.5402  396.8457  754.1726  517.8560  674.8672 
+##      8829      8839      8841      8844      8846      8849      8850      8851 
+##  987.5121  680.2038  834.5212 1032.4918  881.3565  684.0597  693.9386  702.3085 
+##      8853      8857      8860      8862      8863      8866      8873      8884 
+##  599.8752  506.0679 1088.0611  603.1902  960.0410  648.1031  872.2348  672.4139 
+##      8892      8893      8895      8903      8906      8907      8908      8909 
+##  594.5578  944.1165  395.6061  366.7629 1001.3009  325.0635  880.9191 1099.2781 
+##      8910      8911      8916      8919      8922      8924      8937      8938 
+##  918.5145  740.5872  599.5292 1012.9153  881.1468 1026.1188  980.3435  816.7340 
+##      8949      8951      8961      8964      8981      8983      8984      8986 
+##  815.4322 1002.4403  345.6159  448.6759 1031.6951  701.5483  588.1978  594.0486 
+##      9008      9011      9012      9022      9026      9030      9032      9034 
+##  732.0515  848.6000  780.0818  698.0722  968.8340  788.7048  723.1341  462.7926 
+##      9037      9040      9045      9050      9053      9056      9064      9070 
+##  891.9425  627.0948  780.1484  333.4073  840.4109  741.0767  895.0515  650.8101 
+##      9072      9077      9079      9080      9083      9084      9088      9090 
+##  782.4944  468.6947  616.4904  535.3972  376.5999  879.8529  908.2913  745.0388 
+##      9095      9103      9106      9109      9111      9115      9120      9123 
+##  611.7507 1004.2936  626.4180  451.4702  684.3828 1050.0868  725.7589  618.4067 
+##      9127      9130      9142      9150      9151      9152      9153      9157 
+##  875.9122  581.5434  818.0712  924.6587  818.3367  720.6976 1063.5403  450.8263 
+##      9160      9166      9171      9179      9184      9197      9198      9200 
+##  425.7850  818.5019  797.8865  847.6737  916.1198  761.8000  711.4347  734.6286 
+##      9203      9220      9225      9233      9238      9241      9242      9256 
+##  933.9612  928.7207  773.4117  679.7224  730.1708  488.6377  727.7530  327.8074 
+##      9257      9268      9271      9272      9276      9278      9284      9286 
+##  813.3357  258.8742  707.7765  904.5488  768.3651  836.5518  726.0690  657.8094 
+##      9289      9290      9300      9303      9305      9306      9312      9319 
+##  491.1996  706.6856  731.4738  544.2085  567.9827  666.6162  595.9450  504.7526 
+##      9320      9335      9336      9338      9345      9372      9380      9382 
+##  879.3686  924.8556  609.0789  950.9695  523.7844  399.3075  269.8677  983.7085 
+##      9384      9391      9392      9393      9396      9398      9401      9403 
+##  656.5021  903.5915  884.5983  905.9147  547.5492  877.7216  810.7937  656.0943 
+##      9404      9408      9415      9416      9417      9428      9429      9433 
+##  828.6619  836.5896  891.6286  445.5116  950.2576  480.5295  551.2226  480.7729 
+##      9435      9438      9439      9442      9453      9458      9459      9461 
+##  444.5691  749.1448  942.1932 1024.1983  695.7556  896.1248  966.6900  327.1813 
+##      9466      9473      9480      9490      9491      9496      9501      9513 
+##  810.3404 1221.3624  763.6965  804.3675  679.0557  204.8663  813.2778  525.6296 
+##      9517      9518      9521      9527      9528      9531      9535      9536 
+##  998.3031  830.7996  856.9710  622.0311  862.4046  733.8571  776.9884  720.9552 
+##      9538      9544      9548      9553      9556      9563      9565      9567 
+##  630.0629  599.5145  510.2151  571.7133  743.3274  826.7436  660.5211  950.7608 
+##      9571      9574      9575      9577      9579      9580      9582      9583 
+##  388.3927 1071.5927  903.8059  613.0778  690.3529 1065.8768  623.8541  676.5739 
+##      9587      9589      9590      9591      9592      9594      9598      9599 
+## 1039.3237  784.3196  920.6886  884.3448  564.1303  810.3665  759.4484  882.8931 
+##      9602      9607      9611      9612      9617      9622      9625      9627 
+##  571.9258  602.5949  533.2862  902.4323 1076.6722  859.5602  740.0222  720.1685 
+##      9629      9630      9633      9634      9635      9636      9637      9639 
+## 1007.9010  815.6436  756.7367  440.8836  867.8211  746.3769  767.9649  648.4805 
+##      9646      9647      9655      9659      9663      9665      9670      9678 
+##  730.9074  358.6785  662.8618  643.3574  673.8478  608.1354  863.2082  698.3487 
+##      9680      9681      9692      9693      9704      9708      9709      9711 
+##  918.3922  814.1082  721.6859  639.7009  721.0584  832.9220  698.7481  726.0433 
+##      9717      9719      9722      9733      9734      9736      9739      9744 
+##  888.8391  705.7406  377.2149  354.9006  657.5257  727.1842  798.6228 1023.5484 
+##      9751      9760      9769      9771      9775      9776      9778      9780 
+##  701.9386  685.3848  914.1006  747.3100  811.0070  592.9163  419.1889  571.1719 
+##      9786      9794      9801      9808      9810      9812      9815      9816 
+##  323.2405  578.2159  703.0623  554.0410  852.7067  622.2983  442.4778  529.2523 
+##      9820      9823      9825      9827      9830      9834      9845      9849 
+##  670.4050  743.2940  358.2164  952.0797  458.5580  407.0687  311.1273  357.5539 
+##      9850      9852      9854      9856      9864      9866      9875      9877 
+##  525.1078  591.0049  830.6871  785.9114  561.6946  566.0598  855.4627  452.4858 
+##      9878      9879      9890      9909      9912      9918      9920      9930 
+##  605.9596  913.1875  614.8162  830.3325  630.5730  786.7174 1049.8443  632.0510 
+##      9940      9942      9943      9944      9948      9950      9955      9960 
+##  833.4651  684.7235  765.0991  506.2436  886.7432  874.6959  842.3936 1015.2902 
+##      9964      9972      9974      9976      9977      9985      9986      9991 
+##  818.3914  642.0251  695.3058  874.2075  744.6749  842.5640  747.2254  794.6919 
+##      9994      9997      9998     10002     10009     10011     10013     10014 
+##  866.3045  743.8924  536.7136  185.1639  400.5749 1018.1200  876.7007  709.0684 
+##     10016     10020     10021     10041     10044     10047     10052     10058 
+##  728.7400  729.3449  891.2379  643.0181  624.0087  452.8939  703.0625  747.1660 
+##     10059     10085     10106     10117     10121     10123     10126     10138 
+##  910.1166  640.6285  719.9622  699.0506  443.3786  405.9798  791.8197  914.4330 
+##     10139     10146     10147     10148     10150     10151     10156     10162 
+##  466.9640  923.2292 1154.5394  741.0310  980.7388  832.4215  755.9109  755.0675 
+##     10172     10179     10188     10202     10206     10210     10218     10222 
+##  770.5454  579.0443  496.1398  885.1476  770.0177  841.7976  881.3461  370.0854 
+##     10230     10234     10235     10240     10245     10246     10249     10250 
+##  765.0091  539.2514  926.9216  707.4794  919.2893  701.0976  635.1557  761.8343 
+##     10252     10256     10258     10259     10266     10271     10279     10281 
+##  317.9086  736.0956  581.3639  921.4058  774.5163  748.1409  637.8570  273.3486 
+##     10282     10286     10291     10292     10294     10302     10304     10307 
+##  474.4308 1080.1739  912.0193  761.1793  526.6295  758.2732  912.4169  841.8007 
+##     10308     10309     10310     10314     10326     10329     10337     10338 
+## 1037.5574  789.2790  930.3559  552.9031  830.6470 1000.4546  896.0816  953.7248 
+##     10348     10352     10354     10359     10360     10361     10365     10366 
+##  329.1309  552.6381  443.7735  223.2220  714.5142 1015.8079  537.6769  824.4252 
+##     10375     10379     10382     10383     10384     10388     10393     10394 
+##  428.2812  645.0070  649.7529  889.4026  688.2825  707.4610  738.9701  722.6244 
+##     10395     10401     10402     10408     10409     10416     10417     10431 
+##  629.7663  406.7619  745.6844  760.6595 1123.9171  754.7511  983.8804  756.5267 
+##     10439     10445     10447     10448     10455     10457     10460     10461 
+##  786.4128  317.6310  727.1138  787.9916  870.0064  588.1096  661.6080  839.5411 
+##     10464     10471     10475     10476     10479     10483     10490     10492 
+##  649.4247  515.7852  180.0625  379.0054  706.5409  596.3024  435.6265  644.1552 
+##     10494     10497     10498     10500     10502     10505     10509     10510 
+##  770.6073  508.1380  683.4178  300.5286  770.7710  746.9525  595.3837  684.1881 
+##     10513     10516     10520     10523     10527     10536     10539     10546 
+##  684.5652  732.2991  656.9960  793.3312  692.9472  456.0269  415.0278  614.7186 
+##     10548     10552     10554     10558     10559     10561     10566     10568 
+##  575.9974  880.9572  787.7441  485.6642  619.2093  834.3603  845.3482  483.9637 
+##     10570     10577     10580     10587     10590     10593     10612     10614 
+##  603.7163  587.3080 1027.3994  592.2347  861.5087  876.9891  582.6533  855.5950 
+##     10616     10626     10627     10628     10634     10637     10641     10647 
+##  711.0824  501.4498  909.4719  744.7247  595.4784  789.1264  494.5595  754.0274 
+##     10648     10651     10655     10659     10662     10664     10666     10668 
+##  599.6960  704.2060 1017.3033  985.9919  381.4625  443.7413  403.3881  871.7182 
+##     10670     10673     10675     10677     10680     10681     10686     10687 
+##  797.7774  785.4668  373.2681  454.8762  451.3093  965.2477  405.2350  680.6922 
+##     10692     10697     10703     10711     10720     10731     10735     10741 
+##  356.4337  571.1697  831.9709  788.6507  795.1319  533.6732  926.4959  247.1029 
+##     10742     10745     10747     10748     10752     10755     10766     10771 
+##  923.5096  538.6978  320.0694  874.4147  397.8179  827.8299  761.3642  615.8061 
+##     10783     10785     10790     10795     10798     10799     10802     10808 
+##  992.2209  540.9893  677.6755  780.3886  736.3723  602.8257  466.5425  411.7335 
+##     10809     10813     10814     10815     10825     10828     10829     10831 
+##  836.3938  806.3071  949.9127  914.1782  984.3520  819.5696  435.0732  768.3025 
+##     10832     10835     10837     10840     10842     10846     10855     10856 
+##  457.9620  770.1577  704.3777  610.7134  829.9095  805.1943  529.3439  741.2116 
+##     10861     10863     10864     10867     10870     10873     10875     10878 
+##  751.0224  995.6173  918.3450  890.9839  846.5299 1170.0016  797.2021  609.5349 
+##     10881     10882     10885     10886     10900     10909     10914     10916 
+##  543.4992  917.8550  413.9088  858.0488  694.3137  771.5091  730.5840  663.2872 
+##     10921     10924     10926     10933     10935     10939     10944     10956 
+##  628.9645  474.0462  320.0367  749.9101  857.6188  875.9253  801.2748  780.5124 
+##     10958     10959     10964     10968     10969     10973     10975     10976 
+##  711.1314  795.8946  664.2805  903.6365  907.3469  735.8723  799.2360  828.1165 
+##     10979     10988     10991     11002     11008     11011     11012     11017 
+##  672.7799  726.9867  597.6440  779.7126 1122.4433  771.9059  754.5147  663.2528 
+##     11020     11023     11028     11034     11036     11042     11049     11051 
+##  753.6204  721.3550  653.3348  872.0860  513.6140  439.7330  684.4212  767.4119 
+##     11053     11056     11057     11060     11062     11065     11066     11069 
+##  732.9524  231.5110  979.4370  577.5033  670.2034  875.7131  479.2376  747.9720 
+##     11071     11083     11085     11087     11089     11094     11095     11096 
+##  900.8257  665.5606  894.8010  760.5469  565.9124  647.8936  687.8807  905.6298 
+##     11111     11120     11125     11127     11130     11132     11133     11139 
+##  728.9036  825.7004 1126.4825  939.1623 1055.9876  759.5663 1019.3124  802.2027 
+##     11140     11147     11150     11157     11159     11165     11171     11175 
+##  970.5165  779.4236  787.1280  800.0367  383.7202  507.0391  255.4172  734.0830 
+##     11183     11186     11190     11191     11207     11208     11211     11218 
+##  846.4864  878.2194  701.3862  871.1981  481.4084  689.1820  748.3930  862.1946 
+##     11220     11221     11230     11231     11233     11235     11242     11243 
+##  539.0680  631.2131  643.1011  764.9577  760.2439  745.0196  626.8724  869.9995 
+##     11246     11251     11252     11257     11258     11266     11270     11281 
+##  672.8426  919.6133  976.5579  869.7947  496.4781  622.4165  643.5476  663.2045 
+##     11283     11284     11288     11289     11294     11303     11305     11307 
+##  596.3855  674.3312  658.8083  834.9065  853.2427  792.5659  662.4290  861.5489 
+##     11308     11309     11316     11317     11320     11327     11331     11332 
+##  578.2326  951.4302  979.3331  453.2973 1019.5145  732.5724  788.5209  838.0635 
+##     11338     11340     11350     11351     11353     11357     11362     11366 
+##  822.5208  758.0495  791.2628 1002.4049  472.4050  791.1174  706.5404  726.0968 
+##     11367     11369     11370     11372     11373     11376     11385     11398 
+##  789.5833  772.8522  939.3213  782.5220  434.5515  779.3552  415.5417  591.1842 
+##     11404     11407     11410     11415     11417     11424     11426     11429 
+##  772.4766  391.4503  743.4056  783.3041  765.8842  471.9502  293.8633  534.4273 
+##     11433     11437     11440     11444     11447     11454     11455     11459 
+## 1076.1790  488.2026  668.3569  515.2343  731.5484  425.0548  993.0301  559.5285 
+##     11463     11464     11468     11481     11484     11487     11489     11495 
+##  715.5530  579.6139  659.8517  828.8262  779.2002  869.2447  609.0327  555.1960 
+##     11498     11499     11503     11505     11507     11510     11511     11519 
+##  796.1564  860.0585  947.1451  738.3490  812.8764  477.4969  819.2752  708.8689 
+##     11526     11528     11530     11531     11534     11537     11547     11549 
+## 1128.3948  729.5398  964.6407  931.9981  600.9543  789.9570  803.7184  919.4576 
+##     11551     11552     11556     11557     11560     11562     11563     11564 
+##  732.0325  856.7936  845.2364  767.9435  637.0155  567.6089  933.8761 1012.3182 
+##     11575     11576     11583     11599     11607     11616     11620     11622 
+##  709.6613  808.5626  824.3787  419.8042  635.0644  653.3660  850.8657  617.9177 
+##     11634     11642     11646     11648     11661     11665     11672     11686 
+##  734.3166  503.4124 1047.8977  885.7118  517.6779  713.1094  466.0588  860.7462 
+##     11692     11693     11703     11706     11712     11715     11720     11724 
+##  732.6174  518.0903  750.2785  564.1469  834.2462  665.0020  668.8458  413.7752 
+##     11729     11731     11732     11733     11738     11740     11741     11742 
+##  881.4346  628.6922  769.9423  781.6408  837.6031  842.0003  659.0204  363.5996 
+##     11744     11748     11750     11755     11758     11759     11767     11768 
+##  709.0366  334.8575  902.6628  337.0705  536.9021  428.6693  890.5048  880.8447 
+##     11771     11775     11784     11786     11798     11799     11811     11812 
+## 1010.1153  585.7448  980.7435  846.3199  722.4186 1075.5952  614.2985  901.4482 
+##     11819     11824     11825     11826     11828     11829     11831     11834 
+##  816.7580  854.6601  635.6102  834.1919  911.2635  700.3775  851.6523  871.3114 
+##     11839     11851     11854     11855     11856     11857     11858     11860 
+##  929.1451  356.1693  425.4498  725.7416  703.7337  800.4008  427.5179  409.5697 
+##     11864     11866     11867     11870     11876     11889     11894     11895 
+##  817.6658  516.8473  850.3922  942.5348  522.2860  863.8989  475.4466  447.9688 
+##     11904     11914     11915     11917     11919     11926     11928     11933 
+##  722.6743  926.5558  768.5250  805.9114  971.6593  856.7965  620.3559  930.6791 
+##     11934     11943     11945     11946     11948     11949     11951     11961 
+##  506.0685  765.8637  818.0227  714.9959  742.2748  749.6720  835.1500  857.8241 
+##     11962     11969     11972     11989     11996     12000     12004     12005 
+##  604.9061  681.8100  804.3904  497.8039  679.3930  836.3954  984.4380  818.6594 
+##     12006     12009     12019     12027     12029     12036     12049     12050 
+##  645.7890  954.4507 1033.0633  379.4467  809.5989  776.8106  713.4671  446.6620 
+##     12053     12055     12061     12062     12063     12066     12068     12075 
+##  832.3123  951.7453  906.4541 1181.5770  421.0490  947.6239  933.5294 1061.8942 
+##     12084     12087     12090     12099     12110     12113     12115     12116 
+##  666.9350  861.7187  873.0887  429.1889  724.4431  875.6982  878.7306  877.2790 
+##     12117     12118     12133     12138     12139     12144     12145     12152 
+##  828.5930  801.6099  992.8016  432.0018  803.0530  533.3206  900.2029  680.4970 
+##     12159     12161     12163     12169     12174     12178     12183     12186 
+##  612.4857  716.4841  649.3439  773.9373  550.2885  915.3586  906.1956  982.3023 
+##     12190     12194     12200     12207     12210     12212     12213     12215 
+##  689.7495  796.9920  430.4957  966.6266  755.3396  937.2027  802.0985  544.5510 
+##     12216     12221     12223     12226     12229     12232     12234     12238 
+##  967.0131  777.7863  594.5639 1027.4535  337.9042  804.8267 1148.0440  615.2339 
+##     12239     12249     12250     12256     12262     12272     12277     12279 
+##  633.5894  443.6804  802.2696  903.4545 1040.8815  983.0251  414.1937  775.0116 
+##     12285     12286     12289     12293     12295     12306     12310     12317 
+##  702.9891  419.9311  963.3840  751.7773  307.7047  523.9427  520.9349  360.6604 
+##     12322     12324     12330     12333     12335     12337     12340     12348 
+##  682.2349  685.9059  804.2632  779.5514  637.2168  700.9580  815.6277  841.2951 
+##     12350     12352     12357     12360     12365     12367     12374     12376 
+##  922.3098  873.6582 1000.4923  674.2938  815.9514  450.2695  737.4675  981.9662 
+##     12379     12381     12382     12388     12389     12391     12393     12396 
+##  911.2064  621.6360  994.3372  903.3758  642.0533  710.2193  930.6315  594.8448 
+##     12400     12406     12408     12412     12422     12428     12431     12438 
+##  496.4047  450.5074  750.9774  984.8931  806.8763  751.8815  622.6642  607.6320 
+##     12448     12451     12461     12465     12469     12470     12474     12476 
+##  972.6582  787.0707  745.4507  695.5408  907.9718  867.0731  810.7902  555.3135 
+##     12480     12482     12488     12506     12508     12518     12520     12528 
+##  884.3686  540.5277 1028.4667  462.8329 1068.2277 1078.9594  721.8476  589.4769 
+##     12531     12535     12544     12548     12549     12555     12559     12560 
+##  554.5431  741.5185  863.4832  967.9646  432.8969  743.3863  297.1163  405.6732 
+##     12561     12564     12565     12566     12568     12570     12573     12575 
+##  809.3308  311.7301  407.0082  956.6580  441.1176  653.7286  338.4807  785.1477 
+##     12576     12584     12592     12597     12598     12599     12603     12614 
+##  616.5360  951.1857  890.2187  620.1235  814.3874  802.7273  641.6760  462.3260 
+##     12618     12619     12622     12631     12639     12645     12651     12652 
+##  778.3675  498.6587  927.2832  709.5842  611.8877  738.6282  875.9863  752.4683 
+##     12657     12658     12661     12664     12671     12682     12698     12699 
+##  801.4011  834.9875  840.4221  855.8527  328.0950  254.0450  766.2078  842.1335 
+##     12704     12706     12709     12715     12735     12738     12747     12749 
+##  883.2217  828.5077  275.5595  796.6038  571.8751  672.7012  803.8529  392.5795 
+##     12756     12762     12776     12778     12780     12787     12788     12802 
+##  327.1685  790.4773  768.9543  744.3595  669.9972  903.1303  682.6438  450.3262 
+##     12803     12809     12812     12821     12823     12830     12833     12834 
+## 1202.8543  740.0220  998.2286  861.5217  629.1916  477.1705  721.8717  689.7183 
+##     12835     12843     12844     12847     12851     12852     12853     12855 
+##  814.2389  738.5464  891.6824  851.5462  757.7579 1097.5332  549.0144  724.7074 
+##     12858     12859     12867     12869     12870     12872     12873     12874 
+##  867.1250  528.5314  860.4177  796.4636  864.3847  636.6181  697.5917  852.7066 
+##     12876     12884     12885     12891     12895     12896     12899     12901 
+##  785.9785  446.4808  833.0712  904.8778 1045.6205  902.6876  444.9434  601.7969 
+##     12903     12905     12907     12911     12912     12915     12918     12922 
+##  656.2894  977.8631  654.2434  845.0220  995.7626  651.5344  663.6801  580.4146 
+##     12928     12932     12939     12940     12946     12947     12948     12955 
+##  839.0124  680.9109  389.8154  691.2211  574.0022  801.7215  971.1611  884.1513 
+##     12956     12961     12967     12974     12980     12982     12988     12992 
+##  768.0407  773.9723  907.0502  734.1504 1019.7713  698.7563  864.5839  384.5915 
+##     12996     12997     13002     13003     13004     13007     13012     13023 
+##  651.2816  666.3721  882.0433  680.2127 1003.7267  330.1921  408.4406  798.7814 
+##     13027     13028     13034     13038     13044     13053     13055     13058 
+##  645.5384  898.6633  914.7149  898.8916  479.7121  787.9233  572.4964  590.6907 
+##     13060     13068     13075     13087     13089     13090     13091     13092 
+##  651.6787  692.6221 1129.0357  457.2303  754.9550  809.3045  992.7720  675.4104 
+##     13094     13098     13103     13106     13108     13111     13113     13114 
+##  425.9546  531.7078  885.1541  222.3936 1115.2996  848.1243  773.5029  720.7280 
+##     13120     13122     13123     13127     13131     13132     13137     13144 
+##  762.5640 1041.9643  657.4785 1077.3950  709.0590  956.2267 1001.7124  686.8310 
+##     13147     13155     13167     13171     13176     13178     13179     13185 
+##  947.6458  372.7328  606.5480  930.7628 1103.5853  734.0723  455.4546 1036.0873 
+##     13187     13192     13198     13201     13207     13218     13219     13224 
+##  872.8978  793.2840  699.3329  690.6751 1119.4218  607.2391  444.9591  721.2824 
+##     13228     13236     13238     13243     13244     13245     13246     13248 
+##  591.4058  534.0395 1027.5386  618.8676  701.5947  695.2329  780.2017  421.0402 
+##     13249     13250     13256     13258     13267     13268     13271     13272 
+## 1034.0691  992.4704  913.7610  781.0471  430.5970  811.0492  671.8290 1112.1389 
+##     13275     13278     13292     13296     13303     13315     13316     13318 
+##  894.2304  437.0326  670.3556  350.8091  637.2949  634.0597  553.8036  789.3756 
+##     13322     13326     13340     13348     13350     13354     13355     13359 
+## 1002.7222 1012.8783  959.1391  754.1844  679.9583 1045.1814  844.4084  798.4527 
+##     13367     13372     13378     13386     13393     13396     13405     13410 
+##  610.1954  516.9521  458.6686  789.8354  775.1383  902.8329  311.2171  608.2217 
+##     13412     13413     13417     13419     13425     13429     13440     13445 
+##  807.8142  611.3023  638.2954  748.4539  871.6024 1010.6861  836.2443  251.9082 
+##     13449     13451     13461     13462     13469     13473     13479     13482 
+##  548.9722  747.4916  612.7498  990.2742  883.7637  765.7685  656.6790  772.9280 
+##     13483     13485     13489     13493     13501     13502     13508     13510 
+##  445.8092  795.7568  714.5079  507.5084  764.7154  501.4625  672.9278  829.9678 
+##     13519     13523     13534     13539     13543     13550     13551     13552 
+##  791.2749  327.7624  715.0551  693.2305  909.7582  953.9684  840.8954  629.4225 
+##     13566     13575     13583     13585     13590     13591     13592     13595 
+##  809.7169  614.5382  305.9359  592.1441  607.5159  743.3685  910.2511  969.2214 
+##     13596     13600     13606     13609     13612     13616     13617     13620 
+##  733.1398  716.6882  496.7233  788.1729  695.5849  317.6781  680.3082  596.2448 
+##     13628     13634     13636     13637     13638     13641     13645     13653 
+##  732.6061  931.8997  851.8902  495.2042  581.4371  752.5763  734.3356  721.9951 
+##     13664     13668     13673     13697     13698     13704     13716     13717 
+##  834.6970  608.4967  854.2109  774.6544  552.7063  858.9376  759.2255  226.2596 
+##     13718     13728     13729     13731     13733     13735     13752     13757 
+##  458.2204  552.4590  780.0861  694.4768  769.4771  569.6948  703.7823  760.3414 
+##     13763     13764     13766     13768     13769     13771     13773     13780 
+##  636.7888  996.2060  758.5646 1099.7226 1060.9633 1071.4787  684.2781  502.2124 
+##     13785     13786     13793     13795     13803     13805     13812     13818 
+##  716.9366  677.5602  899.1547  406.3691  353.3986  814.9324  616.3625  926.1623 
+##     13819     13823     13827     13828     13831     13844     13851     13854 
+## 1079.2895  657.0933 1120.8393  812.6568  697.7613  756.1823  403.3474  723.5355 
+##     13855     13858     13861     13869     13871     13880     13886     13892 
+##  848.0380  349.7239  787.1258  382.5766  981.5654  669.6263  719.2978  615.1217 
+##     13893     13895     13901     13902     13909     13910     13911     13914 
+##  947.3945  713.3869  733.6011  895.4230  693.7184 1006.8569  814.9451  491.0063 
+##     13916     13922     13938     13957     13961     13970     13971     13973 
+##  295.0674  671.8774  804.5320  801.2318  826.2677  605.0254  795.1913 1083.9816 
+##     13974     13980     13985     13995     13997     14007     14014     14016 
+##  477.2785  590.0363  695.0250  765.0409  928.6459  870.7627  875.8549  964.6510 
+##     14018     14022     14024     14030     14034     14037     14041     14043 
+##  607.0371  935.8197  646.1427  785.2256  702.2073  842.7475  656.9718  751.1780 
+##     14044     14056     14066     14071     14073     14074     14075     14079 
+##  726.0196  425.6404 1073.8731  522.6737  680.8717  742.7687  960.6658  508.6031 
+##     14080     14085     14094     14104     14105     14107     14110     14114 
+##  820.6377  604.8183  781.3642  534.7895  695.9075  620.9772  739.5417  671.9492 
+##     14115     14117     14118     14121     14124     14132     14133     14134 
+##  847.8302  759.9396  712.3966  615.2809  738.6989  884.5518  877.9451  789.3706 
+##     14145     14147     14153     14159     14167     14170     14182     14186 
+##  904.0685  844.5597  806.6589  686.4709  495.7570  860.6621  573.6852  827.6525 
+##     14188     14191     14193     14195     14204     14206     14213     14216 
+##  485.5040 1037.6743  589.4650  749.5867  752.5896  555.7864  739.0957  731.8562 
+##     14218     14225     14226     14230     14238     14257     14259     14269 
+##  703.7901  673.6046  924.1000  900.5607  556.1638  687.0440 1014.1843  517.9650 
+##     14270     14271     14274     14275     14279     14289     14293     14298 
+##  973.9174  820.7713  333.7428  764.1586  440.3465  716.2261  764.8260  636.1240 
+##     14301     14305     14306     14308     14311     14324     14326     14333 
+##  293.4830  899.2828  648.5399  342.1742  532.5614  792.3785  676.1452  614.8407 
+##     14340     14344     14352     14355     14362     14372     14373     14376 
+##  831.9197  560.2409  777.7906  703.4895  768.4626  408.9288  839.8491  827.7044 
+##     14380     14391     14393     14401     14408     14415     14416     14418 
+##  647.0056  755.1029  521.5588  866.1960  755.9478  704.8493  645.9147  693.8461 
+##     14424     14429     14433     14434     14435     14438     14439     14440 
+##  430.7133  735.0153  969.1267  622.1653  589.6618  761.1519  529.7849 1005.6007 
+##     14442     14444     14461     14464     14468     14471     14479     14482 
+##  478.8281  798.4915  814.4907  700.0850  713.4638  621.6192  366.1587  932.2846 
+##     14485     14494     14495     14497     14501     14505     14506     14509 
+##  454.4581  501.9224  709.6906  899.0306  715.1787  748.1070  891.5515  382.8826 
+##     14516     14518     14523     14533     14536     14537     14540     14544 
+##  757.2978 1057.7159 1164.8134  940.8819  747.0342  602.3918  815.6716  707.8611 
+##     14545     14547     14560     14567     14569     14571     14582     14583 
+##  890.2936  523.4262  355.1061  870.2182  938.8729  623.5849  961.3602  784.8163 
+##     14589     14605     14606     14612     14615     14622     14629     14631 
+##  474.0686  856.5859  586.7833  963.1480  400.8272  948.7186  865.7014  836.4421 
+##     14645     14646     14654     14655     14656     14662     14666     14669 
+##  853.0541 1025.7039  729.0487  528.2984  816.9437  906.3158  872.2371  983.8172 
+##     14681     14689     14693     14697     14708     14709     14712     14717 
+##  997.2590  569.7083  859.3874  822.2018  795.6823  463.2171 1006.7943  374.1413 
+##     14720     14731     14736     14743     14745     14747     14749     14750 
+##  433.9503  699.6903  766.0612  589.9226 1051.2195  706.3726 1007.2218  434.6559 
+##     14752     14757     14758     14764     14768     14773     14776     14778 
+## 1025.0780  738.8258  844.2427  740.1397  774.9233  497.2581  355.9631  631.6763 
+##     14780     14781     14788     14789     14791     14797     14799     14804 
+##  861.9664  701.9865 1186.3579  964.6346  718.7412  867.4479  650.8868  224.1160 
+##     14808     14812     14819     14822     14824     14827     14835     14838 
+##  945.8663  983.3618  654.5323  314.1845  341.3049  754.3969  571.9371  750.7457 
+##     14841     14842     14843     14849     14855     14857     14861     14863 
+##  829.1953  140.7813  906.1571  313.4096  607.8007  504.9918  839.3558  403.1292 
+##     14871     14880     14881     14889     14891     14894     14895     14900 
+##  797.8765  798.0077  886.9561  418.1551 1039.0984  299.1865  687.7069  565.9581 
+##     14907     14908     14911     14923     14924     14926     14930     14934 
+##  487.6180  743.0415  611.7009  774.2943  868.1258  520.0444  494.2472  699.6784 
+##     14938     14941     14944     14945     14947     14956     14958     14959 
+##  817.6525  520.8268  814.6158  816.5186  554.9922  658.5445  512.1169  916.2583 
+##     14960     14963     14965     14972     14981     14982     14984     14985 
+##  714.9026  697.9179  870.4235  573.6443  885.7854  780.3621  335.4973  600.3028 
+##     14986     14987     14991     14999     15002     15008     15011     15013 
+##  755.4561  467.8322  544.9465  213.4388  809.1356  836.7660  837.7720  235.9420 
+##     15016     15017     15023     15031     15034     15038     15040     15044 
+##  494.8059  896.3261  571.9113  949.4369  803.1986  535.6409  828.7647  862.2820 
+##     15047     15056     15060     15066     15069     15071     15073     15074 
+##  580.3102  364.0845  657.7705  783.2311  916.7021  618.3237  673.2842  897.9987 
+##     15076     15088     15089     15090     15094     15097     15098     15099 
+##  705.8646  766.9584  476.0413  793.0239  445.5485  630.5874  485.1208  770.6264 
+##     15103     15108     15113     15114     15119     15120     15121     15124 
+##  524.8461  503.3562  599.4402  887.7044  842.7158  898.2670  850.5326  722.3517 
+##     15128     15129     15131     15133     15140     15144     15154     15158 
+##  442.9746  573.4473  421.6987  219.0631  939.5840 1032.2965  756.8225  605.5278 
+##     15160     15164     15168     15170     15171     15182     15193     15195 
+## 1089.2530  765.1167  419.6415  900.7479  791.7833  555.7500  771.8274 1019.8967 
+##     15196     15197     15202     15204     15205     15209     15215     15220 
+##  620.3121  721.0797  757.1349  771.7188  539.5919  710.3715  522.8482  785.4972 
+##     15221     15225     15229     15234     15242     15246     15255     15257 
+##  458.8201  894.8857  475.3814  660.4994  774.3727  792.1908  603.2109 1039.8116 
+##     15261     15262     15264     15266     15275     15280     15281     15285 
+##  934.1639  751.1788  483.0597  885.3227  704.9549  695.2940  850.8513  338.7299 
+##     15286     15287     15289     15291     15292     15301     15307     15313 
+##  618.4971  478.7954  572.5215  951.6593  843.1687  618.5917  801.2608  219.0896 
+##     15314     15329     15342     15350     15358     15372     15374     15375 
+##  561.2478  531.5839  856.6445 1062.6599  953.8240  731.0086  701.7146  761.9394 
+##     15380     15383     15394     15398     15416     15420     15423     15426 
+##  820.5521  573.5275  797.6226 1052.8795  717.8082  614.8207  726.9233  781.8174 
+##     15438     15451     15453     15456     15461     15466     15471     15477 
+##  837.1595  469.4191  920.1286  366.6220  797.1095  854.4376  331.3590  779.6832 
+##     15478     15479     15483     15493     15496     15498     15502     15506 
+##  970.6118  817.0739  708.3942  550.9383  806.1695  912.0387  636.5296  411.1106 
+##     15514     15524     15525     15528     15530     15533     15534     15538 
+##  811.3827  581.1309  785.9943  625.6906  891.9816  723.3136  810.9018  879.1444 
+##     15539     15541     15543     15548     15565     15567     15576     15581 
+##  585.0718  485.6596 1036.9459  963.2658  728.1516  655.3804  627.3998  810.4123 
+##     15582     15585     15592     15595     15596     15600     15608     15616 
+##  598.5755  677.1824  709.8488  792.6065  737.8715  403.2564  389.0923  711.5347 
+##     15618     15625     15628     15632     15638     15643     15645     15647 
+##  945.0556  930.0892  899.0777  636.7357  662.5808  787.6029  651.1499  654.2004 
+##     15651     15653     15654     15659     15660     15664     15666     15669 
+##  365.4103  997.8253  827.4640  363.9112  757.4449  792.5405  614.4780  677.3648 
+##     15670     15671     15676     15682     15686     15688     15689     15695 
+##  742.4329  870.3890  904.4546  847.5012  825.2108  305.2163  460.1576  310.7424 
+##     15699     15706     15712     15714     15717     15719     15728     15731 
+##  863.2958  326.9851  778.4597  888.2445  384.1631  973.9958  337.8118  728.7361 
+##     15735     15737     15738     15740     15746     15747     15752     15753 
+##  425.6307  685.1229  338.8047  877.9702  671.1694  447.0576  398.9469  327.8619 
+##     15754     15756     15757     15758     15765     15767     15770     15775 
+##  439.4534  781.5437 1032.9315  699.7118  827.9420  942.3265  815.1424 1006.4568 
+##     15776     15781     15792     15796     15797     15800     15802     15803 
+##  668.3298 1070.4200  408.3426  774.1212  643.0005  908.6678  701.7627  524.3590 
+##     15807     15813     15814     15816     15822     15825     15831     15832 
+## 1031.1312  900.8636  585.1625  672.9001  694.9722  705.7785  716.7660  667.4940 
+##     15833     15835     15836     15840     15847     15850     15853     15856 
+##  615.2317  755.2065  947.9112  844.0767  713.0548  225.6370  858.4899  746.5298 
+##     15864     15865     15867     15868     15870     15880     15888     15894 
+##  886.1409  687.1575  611.0051  589.1977  436.8738  536.9070  462.4885  695.9055 
+##     15907     15908     15911     15919     15923     15926     15929     15930 
+##  932.8672  921.3434  852.1979  962.5436  988.7231  423.9592  593.7284  720.8028 
+##     15932     15945     15952     15956     15957     15970     15973     15975 
+##  559.3571  734.4326  794.2454  586.5755  524.9275  911.2697  838.5805  885.6767 
+##     15977     15978     15985     15987     15989     15990     15991 
+##  822.0177  826.0450  628.8364  869.6149  719.4255  488.8046  639.7700
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#mean yeil of the focat yeil}
+\FunctionTok{mean}\NormalTok{(test\_predictions)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 714.3984
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#mean of the actual yeild}
+\FunctionTok{mean}\NormalTok{(test1}\SpecialCharTok{$}\NormalTok{Yield\_kg\_per\_hectare)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 713.5136
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate performance metrics}
+\NormalTok{mae }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(}\FunctionTok{abs}\NormalTok{(test\_predictions }\SpecialCharTok{{-}}\NormalTok{ test1}\SpecialCharTok{$}\NormalTok{Yield\_kg\_per\_hectare))}
+\NormalTok{rmse }\OtherTok{\textless{}{-}} \FunctionTok{sqrt}\NormalTok{(}\FunctionTok{mean}\NormalTok{((test\_predictions }\SpecialCharTok{{-}}\NormalTok{ test1}\SpecialCharTok{$}\NormalTok{Yield\_kg\_per\_hectare)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{))}
+\NormalTok{r\_squared }\OtherTok{\textless{}{-}} \FunctionTok{cor}\NormalTok{(test\_predictions, test1}\SpecialCharTok{$}\NormalTok{Yield\_kg\_per\_hectare)}\SpecialCharTok{\^{}}\DecValTok{2}
+
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Test MAE:"}\NormalTok{, mae, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{Test RMSE:"}\NormalTok{, rmse, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{Test R{-}squared:"}\NormalTok{, r\_squared, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Test MAE: 39.53737 
+## Test RMSE: 49.33356 
+## Test R-squared: 0.9384134
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#focat\_value add teast one data set}
+
+\NormalTok{test1}\SpecialCharTok{$}\NormalTok{focat\_yeild}\OtherTok{=}\NormalTok{test\_predictions}
+\FunctionTok{head}\NormalTok{(test1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Soil_Quality Seed_Variety Fertilizer_Amount_kg_per_hectare Sunny_Days
+## 6      65.39434            1                        104.48489   95.92214
+## 7      71.03541            1                         78.52309   80.59135
+## 13     58.43994            1                        277.20574  116.24761
+## 15     87.66250            1                        282.71383   97.23179
+## 17     71.57169            0                         91.82663  101.39229
+## 21     66.01587            1                        141.15340  101.71228
+##    Rainfall_mm Irrigation_Schedule Yield_kg_per_hectare focat_yeild
+## 6     462.0362                   4             634.9782    691.9189
+## 7     536.4574                   3             593.5454    561.3199
+## 13    371.1852                   7            1106.0993   1057.3166
+## 15    522.1010                   6            1049.2449    942.0232
+## 17    494.6965                   5             372.0941    436.4014
+## 21    562.5556                   3             704.3050    633.6825
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plot actual vs. predicted values}
+\FunctionTok{ggplot}\NormalTok{(test1, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ test1}\SpecialCharTok{$}\NormalTok{Yield\_kg\_per\_hectare, }\AttributeTok{y =}\NormalTok{ test1}\SpecialCharTok{$}\NormalTok{focat\_yeild)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.6}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_abline}\NormalTok{(}\AttributeTok{slope =} \DecValTok{1}\NormalTok{, }\AttributeTok{intercept =} \DecValTok{0}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Actual vs Predicted Yield"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Actual Yield (kg per hectare)"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Predicted Yield (kg per hectare)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Use of `test1$Yield_kg_per_hectare` is discouraged.
+## i Use `Yield_kg_per_hectare` instead.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Use of `test1$focat_yeild` is discouraged.
+## i Use `focat_yeild` instead.
+\end{verbatim}
+
+\includegraphics{finalrmd_files/figure-latex/unnamed-chunk-1-21.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#get sumriy actual vs. predicted values}
+\CommentTok{\#actua}
+\FunctionTok{summary}\NormalTok{(test1}\SpecialCharTok{$}\NormalTok{Yield\_kg\_per\_hectare)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   158.1   576.3   731.0   713.5   856.5  1272.1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#predicted values}
+\FunctionTok{summary}\NormalTok{(test1}\SpecialCharTok{$}\NormalTok{focat\_yeild)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   140.8   589.3   733.9   714.4   852.7  1221.4
+\end{verbatim}
+
+\end{document}

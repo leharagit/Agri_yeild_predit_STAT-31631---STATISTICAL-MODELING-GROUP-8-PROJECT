@@ -1,0 +1,383 @@
+---
+title: "final_rmd"
+author: "final"
+date: "2024-08-12"
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+---
+```{r}
+# Load necessary libraries
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(broom)
+# Read the CSV file
+data <- read.csv("agricultural_yield_train.csv")
+
+# Check for missing values using colSums
+missing_values <- colSums(is.na(data))
+
+# Print the number of missing values for each column
+print(missing_values)
+
+# Function to identify outliers using IQR
+find_outliers <- function(x) {
+  Q1 <- quantile(x, 0.25)
+  Q3 <- quantile(x, 0.75)
+  IQR <- Q3 - Q1
+  lower_bound <- Q1 - 1.5 * IQR
+  upper_bound <- Q3 + 1.5 * IQR
+  outliers <- which(x < lower_bound | x > upper_bound)
+  return(outliers)
+}
+
+# Identify outliers for each numeric column
+numeric_cols <- names(data)[sapply(data, is.numeric)]
+outliers_list <- lapply(data[, numeric_cols], find_outliers)
+
+# Combine all outlier indices
+all_outliers <- unique(unlist(outliers_list))
+# Create a  data frame with outlier values
+outliers_data <- data[all_outliers, ]
+
+# Print the data frame
+head(outliers_data)
+# Remove outliers from the data
+cleaned_data <- data[-all_outliers, ]
+
+#######################################################
+
+# Print the number of rows before and after removing outliers
+print(paste("Number of rows before removing outliers:", nrow(data)))
+print(paste("Number of rows after removing outliers:", nrow(cleaned_data)))
+#consider the oulier of data frame
+hist(outliers_data$Yield_kg_per_hectare ,xlab= "Yield_kg_per_hectare_outlier data",main = "Histograms for ouler yield",breaks = 12,col = "blue")
+# Logarithmic transformation
+log_yield <- log(outliers_data$Yield_kg_per_hectare)
+hist(log_yield, xlab = "Log of Yield (kg per hectare)", main = "Histogram of Log Transformed Yield", breaks = 12, col = "blue")
+
+#mean of the compair yeild
+#with outlier mean of yeil
+mean(data$Yield_kg_per_hectare)
+#with out mean of yeil
+mean(cleaned_data$Yield_kg_per_hectare)
+#ouiltr mean
+mean(outliers_data$Yield_kg_per_hectare)
+#with oulier variyanse yeild
+var(data$Yield_kg_per_hectare)
+#with out oulier variyanse yeild
+var(cleaned_data$Yield_kg_per_hectare)
+#oulier variyanse yeild
+var(outliers_data$Yield_kg_per_hectare)
+
+######################################################
+#consider the cleaned_data frame
+# Calculate the number of samples for the training set (75% of the data)
+train_size <- floor(0.75 * nrow(cleaned_data))
+
+# Generate a vector of row indices
+indices <- 1:nrow(cleaned_data)
+
+# Randomly sample indices for the training set
+train_indices <- sample(indices, size = train_size, replace = FALSE)
+
+# Create training and testing sets
+train1 <- cleaned_data[train_indices, ]
+test1 <- cleaned_data[-train_indices, ]
+
+# Print the number of rows train and testing data set
+print(paste("Number of rows train data set:", nrow(train1)))
+print(paste("Number of rows teast data set:", nrow(test1)))
+
+# Filter the train1 dataset where Seed_Variety is 0
+train1_filtered_0 <- subset(train1, Seed_Variety == 0)
+
+# Print the head of the filtered dataset to verify
+head(train1_filtered_0)
+
+# Filter the train1 dataset where Seed_Variety is 1
+train1_filtered_1 <- subset(train1, Seed_Variety == 1)
+
+# Print the head of the filtered dataset to verify
+head(train1_filtered_1)
+#####################################################################
+#discriptive anyis
+df <-train1 # Training data set
+# Display summary statistics
+summary(df)
+
+#Histograms for Soil_Quality
+hist(df$Soil_Quality,xlab = "Soil_Quality",main = "Histograms for Soil_Quality",breaks = 50,col = "blue")
+
+# Summarize the data to get counts and percentages for each seed variety
+seed_variety_counts <- df %>%
+  group_by(Seed_Variety) %>%
+  summarise(Count = n()) %>%
+  mutate(Percentage = Count / sum(Count) * 100)
+
+# Plot a pie chart using ggplot
+ggplot(seed_variety_counts, aes(x = "", y = Count, fill = factor(Seed_Variety))) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_polar("y", start = 0) +
+  geom_text(aes(label = paste0(round(Percentage, 1), "%")), 
+            position = position_stack(vjust = 0.5), size = 5) +
+  labs(title = "Distribution of Seed Varieties", fill = "Seed Variety") +
+  theme_void() +
+  scale_fill_manual(values = c("green", "blue"))
+
+
+
+#Histograms for Fertilizer_Amount_kg_per_hectare
+
+hist(df$Fertilizer_Amount_kg_per_hectare,xlab = "Fertilizer_Amount_kg_per_hectare",main = "Histograms for Fertilizer_Amount_kg_per_hectare",breaks = 50,col = "blue")
+
+
+#Histograms for Rainfall_mm
+
+hist(df$Rainfall_mm,xlab = "Rainfall_mm",main = "#Histograms for Rainfall_mm",breaks = 50,col = "blue")
+
+#Histograms for Irrigation_Schedule
+
+hist(df$Irrigation_Schedule ,xlab= "Irrigation_Schedule",main = "#Histograms for Irrigation_Schedule",breaks = 12,col = "blue")
+
+#Histograms for Yield_kg_per_hectare
+
+hist(df$Yield_kg_per_hectare ,xlab= "Yield_kg_per_hectare",main = "#Histograms for Yield_kg_per_hectare",breaks = 50,col = "blue")
+
+#consider the relasion between two variyable
+
+plot(df$Fertilizer_Amount_kg_per_hectare, df$Yield_kg_per_hectare, main = "Basic Scatter Plot", xlab = "Fertilizer_Amount_kg_per_hectare", ylab = "Yield_kg_per_hectare", pch = 19, col = "blue")
+
+# Correlation matrix
+cor_matrix <- cor(cleaned_data %>% select_if(is.numeric))
+print(cor_matrix)
+#####################################################################################################################################################################################
+# Sample 100 random rows from the cleaned_data data frame
+set.seed(123) # Set seed for reproducibility
+random_sample <- sample_n(cleaned_data, 100)
+
+# Create scatter plot with a regression line for Fertilizer_Amount_kg_per_hectare vs Yield_kg_per_hectare
+ggplot(random_sample, aes(x = Fertilizer_Amount_kg_per_hectare, y = Yield_kg_per_hectare)) +
+  geom_point(color = "blue") + # Scatter plot
+  geom_smooth(method = "lm", color = "red", se = FALSE) + # Regression line
+  labs(title = "Scatter Plot of Fertilizer Amount vs Yield with Regression Line",
+       x = "Fertilizer Amount (kg per hectare)",
+       y = "Yield (kg per hectare)") +
+  theme_minimal()
+
+
+######################################################
+#discriptive analyis for comparison of the seed vari
+#train data set
+summary(train1)
+
+#seed varity o data set
+summary(train1_filtered_0)
+#seed varity 1 data set
+summary(train1_filtered_1)
+###########################################################################3
+# Fit the model
+model <- lm(Yield_kg_per_hectare ~ Fertilizer_Amount_kg_per_hectare + 
+            Seed_Variety + Rainfall_mm + Irrigation_Schedule + Soil_Quality + 
+            Sunny_Days, data = train1)
+#check the Diagnosing
+#Diagnosing Heteroscedasticity
+# Plot residuals vs. fitted values
+#This plot helps detect non-linearity, unequal error variances (heteroscedasticity), and outliers.
+plot(model$fitted.values, model$residuals, 
+     xlab = "Fitted Values", 
+     ylab = "Residuals", 
+     main = "Residuals vs. Fitted Values")
+abline(h = 0, col = "red")
+
+# Add a smoothed line to identify patterns
+lines(lowess(model$fitted.values, model$residuals), col = "blue")
+#Normal Q-Q Plot
+qqnorm(model$residuals, main = "Normal Q-Q Plot")
+qqline(model$residuals, col = "red")
+
+
+#Scale-Location Plot (Spread-Location Plot)
+plot(model$fitted.values, sqrt(abs(model$residuals)), 
+     xlab = "Fitted Values", 
+     ylab = "Square Root of Standardized Residuals", 
+     main = "Scale-Location Plot")
+abline(h = 0, col = "red")
+lines(lowess(model$fitted.values, sqrt(abs(model$residuals))), col = "blue")
+
+#Residuals vs. Leverage Plot
+
+plot(model, which = 5)
+#Variance Inflation Factor (VIF)
+#Multicollinearity
+library(car)
+vif_values <- vif(model)
+print(vif_values)
+#####################################################################
+#Model selecsion  prat
+
+#with seed variety
+model1 <- lm(Yield_kg_per_hectare ~ Fertilizer_Amount_kg_per_hectare + Seed_Variety+ Rainfall_mm + Irrigation_Schedule + Soil_Quality+Sunny_Days, data = train1)
+# Print the summary of the linear model
+summary(model1)
+
+#wiith out seed varity
+model2 <- lm(Yield_kg_per_hectare ~ Fertilizer_Amount_kg_per_hectare +Rainfall_mm + Irrigation_Schedule + Soil_Quality+Sunny_Days, data = train1)
+# Print the summary of the linear model
+summary(model2)
+
+#forwer selcsion method
+library(leaps)
+
+# Fit the regsubsets model with all predictors including Seed_Variety
+Model_forward<- regsubsets(Yield_kg_per_hectare ~ Fertilizer_Amount_kg_per_hectare + Seed_Variety+ Rainfall_mm + Irrigation_Schedule + Soil_Quality+Sunny_Days, data = train1,nvmax = 6,method="forward")  # nvmax is the maximum number of predictors to include
+
+# Get the summary of the model
+model_with_seed_summary <- summary(Model_forward)
+
+# Display key information from the summary
+print(model_with_seed_summary)
+
+# Set up the plotting area to display two plots side by side
+par(mfrow = c(1, 2))
+
+# Plot RSS for each model
+plot(model_with_seed_summary$rss, 
+     xlab = "Number of Variables", 
+     ylab = "RSS", 
+     type = "l", 
+     main = "RSS vs Number of Variables")
+
+# Find and highlight the model with the minimum RSS
+RSS_min <- which.min(model_with_seed_summary$rss)
+points(RSS_min, model_with_seed_summary$rss[RSS_min], col = "blue", cex = 2, pch = 20)
+abline(v = RSS_min, col = "blue", lty = 2)
+
+# Plot Adjusted R-squared for each model
+plot(model_with_seed_summary$adjr2, 
+     xlab = "Number of Variables", 
+     ylab = "Adjusted R-squared", 
+     type = "l", 
+     main = "Adjusted R-squared vs Number of Variables")
+
+# Find and highlight the model with the maximum Adjusted R-squared
+adjr2_max <- which.max(model_with_seed_summary$adjr2)
+points(adjr2_max, model_with_seed_summary$adjr2[adjr2_max], col = "red", cex = 2, pch = 20)
+abline(v = adjr2_max, col = "red", lty = 2)
+
+par(mfrow = c(1, 2))
+plot(model_with_seed_summary$cp, xlab = "Number of Variables", ylab = "Cp", type = "l")
+cp.min <- which.min(model_with_seed_summary$cp)
+points(cp.min, model_with_seed_summary$cp[cp.min], col = "red", cex = 2, pch = 20)
+bic.min <- which.min(model_with_seed_summary$bic)
+plot(model_with_seed_summary$bic, xlab = "Number of Variables", ylab = "BIC", type = "l")
+points(bic.min, model_with_seed_summary$bic[bic.min], col = "red", cex = 2, pch = 20)
+
+
+res.sum <- summary(Model_forward)
+criterion<-data.frame(
+model=1:6,
+Adj.R2 = (res.sum$adjr2),
+CP = (res.sum$cp),
+BIC = (res.sum$bic),
+RSS=res.sum$rss
+)
+head(criterion)
+
+
+
+library(ggplot2)
+ggplot(criterion, aes(model)) +
+ geom_line(aes(y = Adj.R2, colour = "Adj.R2")) +
+ geom_line(aes(y = CP, colour = "CP"))+
+ geom_line(aes(y = BIC, colour = "BIC"))+
+ geom_line(aes(y = RSS, colour = "RSS"))
+
+library(ggplot2)
+ggplot(criterion, aes(model)) +
+ geom_line(aes(y = Adj.R2, colour = "Adj.R2")) +
+ geom_line(aes(y = CP, colour = "CP"))+
+ geom_line(aes(y = BIC, colour = "BIC"))+
+ geom_line(aes(y = RSS, colour = "RSS"))
+
+# standardize
+criterion_std<-cbind(model=criterion$model, scale(criterion[,-1]))
+criterion_std<-as.data.frame(criterion_std)
+head(criterion_std)
+
+#after stadlize
+ggplot(criterion_std, aes(model)) +
+ geom_line(aes(y = Adj.R2, colour = "Adj.R2")) +
+ geom_line(aes(y = CP, colour = "CP"))+
+ geom_line(aes(y = BIC, colour = "BIC"))+
+ geom_line(aes(y = RSS, colour = "RSS"))
+
+coef(Model_forward, 6)
+
+#better model
+better_model <- lm(Yield_kg_per_hectare ~ Fertilizer_Amount_kg_per_hectare + Seed_Variety+ Rainfall_mm + Irrigation_Schedule + Soil_Quality+Sunny_Days,data=train1 )
+summary(better_model)
+
+
+
+# Model diagnostics
+par(mfrow=c(2,2))
+plot(better_model)
+
+###################################################################
+
+# Make predictions on the test data
+test_predictions <- predict(better_model, newdata = test1)
+
+
+
+#mean yeil of the focat yeil
+mean(test_predictions)
+
+#mean of the actual yeild
+mean(test1$Yield_kg_per_hectare)
+
+
+df[-as.nu
+
+
+
+# Calculate performance metrics
+mae <- mean(abs(test_predictions - test1$Yield_kg_per_hectare))
+rmse <- sqrt(mean((test_predictions - test1$Yield_kg_per_hectare)^2))
+r_squared <- cor(test_predictions, test1$Yield_kg_per_hectare)^2
+
+cat("Test MAE:", mae, "\nTest RMSE:", rmse, "\nTest R-squared:", r_squared, "\n")
+
+
+
+#focat_value add teast one data set
+
+test1$focat_yeild=test_predictions
+head(test1)
+
+
+# Plot actual vs. predicted values
+ggplot(test1, aes(x = test1$Yield_kg_per_hectare, y = test1$focat_yeild)) +
+  geom_point(color = "blue", alpha = 0.6) +
+  geom_abline(slope = 1, intercept = 0, color = "red", linetype = "dashed") +
+  labs(title = "Actual vs Predicted Yield",
+       x = "Actual Yield (kg per hectare)",
+       y = "Predicted Yield (kg per hectare)") +
+  theme_minimal()
+
+
+
+#get sumriy actual vs. predicted values
+#actua
+summary(test1$Yield_kg_per_hectare)
+
+#predicted values
+summary(test1$focat_yeild)
+
+
+
+```
+
